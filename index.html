@@ -1,0 +1,1689 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SXSW Capital Factory Portfolio</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        :root {
+            --red: #DC2626;
+            --black: #000000;
+            --navy: #1E3A8A;
+            --gold: #F59E0B;
+            --white: #FFFFFF;
+            --red-gradient: linear-gradient(135deg, #DC2626, #B91C1C);
+            --navy-gradient: linear-gradient(135deg, #1E3A8A, #1E40AF);
+            --gold-gradient: linear-gradient(135deg, #F59E0B, #D97706);
+        }
+        
+        body {
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(135deg, var(--black) 0%, var(--navy) 50%, var(--black) 100%);
+            color: var(--white);
+            line-height: 1.6;
+            min-height: 100vh;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        .hero-section {
+            padding: 80px 0;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .hero-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: radial-gradient(circle at 50% 50%, rgba(220, 38, 38, 0.1) 0%, transparent 70%);
+            animation: pulse 4s ease-in-out infinite;
+        }
+        
+        @keyframes pulse {
+            0%, 100% { opacity: 0.3; }
+            50% { opacity: 0.6; }
+        }
+        
+        .main-title {
+            font-size: clamp(2.5rem, 5vw, 4rem);
+            font-weight: bold;
+            margin-bottom: 30px;
+            position: relative;
+            z-index: 2;
+        }
+        
+        .rocket {
+            color: var(--gold);
+            text-shadow: 0 0 20px var(--gold);
+            animation: rocket-bounce 2s ease-in-out infinite;
+        }
+        
+        @keyframes rocket-bounce {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+        }
+        
+        .title-gradient {
+            background: var(--red-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            text-shadow: none;
+        }
+        
+        .subtitle {
+            font-size: clamp(1.2rem, 3vw, 2rem);
+            color: var(--gold);
+            margin-bottom: 20px;
+            font-weight: 600;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.5);
+        }
+        
+        .content-section {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 20px;
+            padding: 40px;
+            margin: 40px 0;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .content-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: var(--gold-gradient);
+        }
+        
+        .section-title {
+            color: var(--gold);
+            font-size: 1.8rem;
+            margin-bottom: 20px;
+            font-weight: bold;
+        }
+        
+        .highlight-box {
+            background: var(--navy-gradient);
+            padding: 30px;
+            border-radius: 15px;
+            margin: 20px 0;
+            border-left: 5px solid var(--gold);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+            transform: translateY(0);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .highlight-box:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(220, 38, 38, 0.2);
+        }
+        
+        .floating-elements {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 1;
+        }
+        
+        .floating-circle {
+            position: absolute;
+            border-radius: 50%;
+            opacity: 0.1;
+            animation: float 6s ease-in-out infinite;
+        }
+        
+        .circle-1 {
+            width: 100px;
+            height: 100px;
+            background: var(--red);
+            top: 20%;
+            left: 10%;
+            animation-delay: 0s;
+        }
+        
+        .circle-2 {
+            width: 150px;
+            height: 150px;
+            background: var(--gold);
+            top: 60%;
+            right: 15%;
+            animation-delay: 2s;
+        }
+        
+        .circle-3 {
+            width: 80px;
+            height: 80px;
+            background: var(--navy);
+            bottom: 20%;
+            left: 20%;
+            animation-delay: 4s;
+        }
+        
+        @keyframes float {
+            0%, 100% { transform: translateY(0px) rotate(0deg); }
+            50% { transform: translateY(-20px) rotate(180deg); }
+        }
+        
+        .text-highlight {
+            color: var(--gold);
+            font-weight: bold;
+        }
+        
+        .text-red {
+            color: var(--red);
+            font-weight: bold;
+        }
+        
+        @keyframes pulse-red {
+            0%, 100% { box-shadow: 0 0 10px var(--red); }
+            50% { box-shadow: 0 0 20px var(--red), 0 0 30px var(--red); }
+        }
+        
+        @keyframes pulse-gold {
+            0%, 100% { box-shadow: 0 0 15px var(--gold); }
+            50% { box-shadow: 0 0 25px var(--gold), 0 0 35px var(--gold); }
+        }
+        
+        @media (max-width: 768px) {
+            .hero-section {
+                padding: 40px 0;
+            }
+            
+            .content-section {
+                padding: 25px;
+                margin: 20px 0;
+            }
+            
+            .highlight-box {
+                padding: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="floating-elements">
+        <div class="floating-circle circle-1"></div>
+        <div class="floating-circle circle-2"></div>
+        <div class="floating-circle circle-3"></div>
+    </div>
+    
+    <div class="container">
+        <section class="hero-section">
+            <h1 class="main-title">
+                <span class="rocket">🚀</span> 
+                <span class="title-gradient">SXSW Capital Factory House</span> 
+                <span class="rocket">🚀</span>
+            </h1>
+            <h2 class="subtitle">Strategic Go-to-Market Plan for Account Executive Assignment</h2>
+        </section>
+        
+        <div class="content-section">
+            <h2 class="section-title">📋 Executive Summary 📋</h2>
+            
+            <div class="highlight-box">
+                <h3 style="color: var(--gold); font-size: 1.4rem; margin-bottom: 15px;">🎯 Opportunity</h3>
+                <p style="font-size: 1.1rem; margin-bottom: 20px;">
+                    Capital Factory's SXSW event represents our <span class="text-red">biggest revenue opportunity of the year</span>, with thousands of connections made and hundreds of VIPs attending during Austin's premier tech conference.
+                </p>
+                <p style="font-size: 1.1rem; margin-bottom: 20px;">
+                    We're launching a sponsorship program to secure <span class="text-highlight">$500K+ in revenue</span> for Capital Factory House at SXSW 2026.
+                </p>
+            </div>
+            
+            <div class="highlight-box">
+                <h3 style="color: var(--gold); font-size: 1.4rem; margin-bottom: 15px;">🚀 Key Goals</h3>
+                <div style="display: grid; gap: 15px;">
+                    <div style="padding: 15px; background: rgba(220, 38, 38, 0.1); border-radius: 10px; border-left: 4px solid var(--red);">
+                        <strong style="color: var(--red);">Revenue Target:</strong> Generate <span class="text-highlight">$500K+ revenue</span> through strategic sponsorship sales
+                    </div>
+                    <div style="padding: 15px; background: rgba(245, 158, 11, 0.1); border-radius: 10px; border-left: 4px solid var(--gold);">
+                        <strong style="color: var(--gold);">Network Expansion:</strong> Expand our corporate partnership network
+                    </div>
+                    <div style="padding: 15px; background: rgba(30, 58, 138, 0.1); border-radius: 10px; border-left: 4px solid var(--navy);">
+                        <strong style="color: #60A5FA;">Market Position:</strong> Establish Capital Factory as the <span class="text-highlight">premier SXSW destination</span> for startup ecosystem engagement
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="content-section">
+            <h2 class="section-title">🎯 Market Analysis 🎯</h2>
+            
+            <div class="highlight-box">
+                <h3 style="color: var(--gold); font-size: 1.4rem; margin-bottom: 20px;">🎪 Target Market</h3>
+                <p style="font-size: 1.1rem; margin-bottom: 25px;">
+                    We're targeting <span class="text-highlight">Series A–C SaaS brands</span>, <span class="text-red">health tech innovators</span>, and <span class="text-highlight">APAC expansion service firms</span> with no current SXSW footprint.
+                </p>
+                
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; margin-top: 25px;">
+                    <div style="background: var(--red-gradient); padding: 20px; border-radius: 12px; text-align: center; box-shadow: 0 8px 25px rgba(220, 38, 38, 0.3);">
+                        <div style="font-size: 2rem; margin-bottom: 10px;">💼</div>
+                        <h4 style="color: var(--white); font-weight: bold; margin-bottom: 8px;">Series A–C SaaS</h4>
+                        <p style="font-size: 0.9rem; opacity: 0.9;">Scaling software companies</p>
+                    </div>
+                    
+                    <div style="background: var(--gold-gradient); padding: 20px; border-radius: 12px; text-align: center; box-shadow: 0 8px 25px rgba(245, 158, 11, 0.3);">
+                        <div style="font-size: 2rem; margin-bottom: 10px;">🏥</div>
+                        <h4 style="color: var(--white); font-weight: bold; margin-bottom: 8px;">Health Tech Innovators</h4>
+                        <p style="font-size: 0.9rem; opacity: 0.9;">Medical technology pioneers</p>
+                    </div>
+                    
+                    <div style="background: var(--navy-gradient); padding: 20px; border-radius: 12px; text-align: center; box-shadow: 0 8px 25px rgba(30, 58, 138, 0.3);">
+                        <div style="font-size: 2rem; margin-bottom: 10px;">🌏</div>
+                        <h4 style="color: var(--white); font-weight: bold; margin-bottom: 8px;">APAC Expansion</h4>
+                        <p style="font-size: 0.9rem; opacity: 0.9;">Service firms entering US market</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="highlight-box">
+                <h3 style="color: var(--red); font-size: 1.4rem; margin-bottom: 15px;">⚡ Market Problem</h3>
+                <div style="background: rgba(0,0,0,0.3); padding: 25px; border-radius: 15px; border-left: 5px solid var(--red);">
+                    <p style="font-size: 1.2rem; line-height: 1.8; text-align: center;">
+                        Sponsors need <span class="text-highlight">curated visibility</span> during SXSW without getting lost in the noise.
+                    </p>
+                    <div style="text-align: center; margin: 25px 0; font-size: 2rem;">
+                        🏛️ vs 🌪️
+                    </div>
+                    <p style="font-size: 1.3rem; text-align: center; font-weight: bold;">
+                        <span style="color: var(--gold);">CF House offers gravity</span>, <span style="color: var(--red);">not clutter</span>.
+                    </p>
+                </div>
+            </div>
+        </div>
+        
+        <div class="content-section">
+            <h2 class="section-title">🤖 Sales Strategy & Inventory Prioritization 🤖</h2>
+            
+            <div class="highlight-box">
+                <h3 style="color: var(--gold); font-size: 1.6rem; margin-bottom: 25px; text-align: center;">🎯 $500,000 Sales Quota Strategy 🎯</h3>
+                
+                <div style="background: rgba(0,0,0,0.4); padding: 25px; border-radius: 15px; margin-bottom: 30px; border: 2px solid var(--gold);">
+                    <h4 style="color: var(--red); font-size: 1.3rem; margin-bottom: 15px;">📈 New Business Focus</h4>
+                    <p style="font-size: 1.1rem; line-height: 1.7;">
+                        <span class="text-highlight">80% new clients ($400K)</span> + <span style="color: #60A5FA;">20% renewal support ($100K)</span> = Aggressive new client acquisition strategy while existing rep handles primary renewal responsibilities.
+                    </p>
+                </div>
+                
+                <div style="display: grid; gap: 25px; margin-top: 30px;">
+                    <!-- Premium Tier -->
+                    <div style="background: var(--red-gradient); padding: 25px; border-radius: 15px; box-shadow: 0 10px 30px rgba(220, 38, 38, 0.4); transform: scale(1.02);">
+                        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px;">
+                            <h4 style="color: var(--white); font-size: 1.4rem; font-weight: bold;">💎 Premium New Business</h4>
+                            <span style="background: rgba(255,255,255,0.2); padding: 8px 15px; border-radius: 20px; font-weight: bold; font-size: 1.1rem;">$240K</span>
+                        </div>
+                        <p style="font-size: 1.1rem; margin-bottom: 15px;">
+                            <strong>6 × $40K avg = $240K</strong>
+                        </p>
+                        <div style="display: flex; flex-wrap: wrap; gap: 10px;">
+                            <span style="background: rgba(255,255,255,0.15); padding: 6px 12px; border-radius: 15px; font-size: 0.9rem;">Eli Lilly</span>
+                            <span style="background: rgba(255,255,255,0.15); padding: 6px 12px; border-radius: 15px; font-size: 0.9rem;">Cribl.io</span>
+                            <span style="background: rgba(255,255,255,0.15); padding: 6px 12px; border-radius: 15px; font-size: 0.9rem;">Sword Health</span>
+                        </div>
+                    </div>
+                    
+                    <!-- Mid-Tier -->
+                    <div style="background: var(--gold-gradient); padding: 25px; border-radius: 15px; box-shadow: 0 10px 30px rgba(245, 158, 11, 0.4);">
+                        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px;">
+                            <h4 style="color: var(--white); font-size: 1.4rem; font-weight: bold;">⭐ Mid-Tier New Business</h4>
+                            <span style="background: rgba(255,255,255,0.2); padding: 8px 15px; border-radius: 20px; font-weight: bold; font-size: 1.1rem;">$160K</span>
+                        </div>
+                        <p style="font-size: 1.1rem; margin-bottom: 15px;">
+                            <strong>8 × $20K avg = $160K</strong>
+                        </p>
+                        <div style="display: flex; flex-wrap: wrap; gap: 10px;">
+                            <span style="background: rgba(255,255,255,0.15); padding: 6px 12px; border-radius: 15px; font-size: 0.9rem;">Kontent.ai</span>
+                            <span style="background: rgba(255,255,255,0.15); padding: 6px 12px; border-radius: 15px; font-size: 0.9rem;">SleekFlow</span>
+                            <span style="background: rgba(255,255,255,0.15); padding: 6px 12px; border-radius: 15px; font-size: 0.9rem;">Acclime</span>
+                        </div>
+                    </div>
+                    
+                    <!-- Renewal Support -->
+                    <div style="background: var(--navy-gradient); padding: 25px; border-radius: 15px; box-shadow: 0 10px 30px rgba(30, 58, 138, 0.4);">
+                        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px;">
+                            <h4 style="color: var(--white); font-size: 1.4rem; font-weight: bold;">🔄 Renewal Support</h4>
+                            <span style="background: rgba(255,255,255,0.2); padding: 8px 15px; border-radius: 20px; font-weight: bold; font-size: 1.1rem;">$100K</span>
+                        </div>
+                        <p style="font-size: 1.1rem;">
+                            <strong>10 × $10K avg = $100K</strong><br>
+                            <span style="opacity: 0.9;">Assist with existing sponsor renewals</span>
+                        </p>
+                    </div>
+                </div>
+                
+                <!-- Summary Stats -->
+                <div style="margin-top: 30px; padding: 20px; background: rgba(255,255,255,0.05); border-radius: 12px; text-align: center;">
+                    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(120px, 1fr)); gap: 20px;">
+                        <div>
+                            <div style="font-size: 1.8rem; color: var(--red); font-weight: bold;">24</div>
+                            <div style="font-size: 0.9rem; opacity: 0.8;">Total Deals</div>
+                        </div>
+                        <div>
+                            <div style="font-size: 1.8rem; color: var(--gold); font-weight: bold;">80%</div>
+                            <div style="font-size: 0.9rem; opacity: 0.8;">New Business</div>
+                        </div>
+                        <div>
+                            <div style="font-size: 1.8rem; color: var(--navy); font-weight: bold;">$500K</div>
+                            <div style="font-size: 0.9rem; opacity: 0.8;">Total Target</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="content-section">
+            <h2 class="section-title">📅 Three-Phase Revenue Strategy 📅</h2>
+            
+            <!-- Phase 1 -->
+            <div class="highlight-box" style="border-left: 5px solid var(--gold); background: linear-gradient(135deg, rgba(245, 158, 11, 0.1), rgba(245, 158, 11, 0.05));">
+                <div style="display: flex; align-items: center; margin-bottom: 20px;">
+                    <h3 style="color: var(--gold); font-size: 1.5rem; margin-right: 15px;">⭐ Phase 1: Renewal Priority</h3>
+                    <span style="background: var(--gold-gradient); color: var(--black); padding: 8px 16px; border-radius: 20px; font-weight: bold; font-size: 0.9rem;">March-May 2025</span>
+                </div>
+                
+                <div style="background: rgba(0,0,0,0.3); padding: 20px; border-radius: 12px; margin-bottom: 20px;">
+                    <h4 style="color: var(--white); font-size: 1.2rem; margin-bottom: 10px;">🎯 STRATEGY</h4>
+                    <p style="font-size: 1rem; line-height: 1.6;">
+                        Immediately after CF House 2025 ends, launch 2026 renewals while <span class="text-highlight">ROI is fresh</span> and relationships are strongest. Target existing sponsors first (<span class="text-gold">60% of business foundation</span>).
+                    </p>
+                </div>
+                
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-bottom: 20px;">
+                    <div>
+                        <h4 style="color: var(--gold); font-size: 1.1rem; margin-bottom: 10px;">🎪 PRIORITY FOCUS</h4>
+                        <div style="display: flex; flex-direction: column; gap: 8px;">
+                            <span style="background: var(--red-gradient); padding: 8px 12px; border-radius: 8px; font-size: 0.9rem; text-align: center;">Founders Lounge $60K</span>
+                            <span style="background: var(--gold-gradient); color: var(--black); padding: 8px 12px; border-radius: 8px; font-size: 0.9rem; text-align: center;">Secret Salon $35K</span>
+                            <span style="background: var(--navy-gradient); padding: 8px 12px; border-radius: 8px; font-size: 0.9rem; text-align: center;">VC Brunch $30K</span>
+                        </div>
+                    </div>
+                    <div>
+                        <h4 style="color: var(--gold); font-size: 1.1rem; margin-bottom: 10px;">📋 TARGET LIST</h4>
+                        <ul style="list-style: none; padding: 0;">
+                            <li style="padding: 4px 0; font-size: 0.95rem;">• 2025 CF House sponsors</li>
+                            <li style="padding: 4px 0; font-size: 0.95rem;">• Austin tech partners</li>
+                            <li style="padding: 4px 0; font-size: 0.95rem;">• Existing Capital Factory ecosystem</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Phase 2 -->
+            <div class="highlight-box" style="border-left: 5px solid var(--red); background: linear-gradient(135deg, rgba(220, 38, 38, 0.1), rgba(220, 38, 38, 0.05));">
+                <div style="display: flex; align-items: center; margin-bottom: 20px;">
+                    <h3 style="color: var(--red); font-size: 1.5rem; margin-right: 15px;">⭐ Phase 2: New Business Development</h3>
+                    <span style="background: var(--red-gradient); color: var(--white); padding: 8px 16px; border-radius: 20px; font-weight: bold; font-size: 0.9rem;">June-November 2025</span>
+                </div>
+                
+                <div style="background: rgba(0,0,0,0.3); padding: 20px; border-radius: 12px; margin-bottom: 20px;">
+                    <h4 style="color: var(--white); font-size: 1.2rem; margin-bottom: 10px;">🎯 STRATEGY</h4>
+                    <p style="font-size: 1rem; line-height: 1.6;">
+                        Focus on <span class="text-red">net-new clients</span> Capital Factory hasn't partnered with before. Target emerging sectors and non-traditional sponsors while renewals are locked. Use <span class="text-highlight">renewal success stories as social proof</span>.
+                    </p>
+                </div>
+                
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-bottom: 20px;">
+                    <div>
+                        <h4 style="color: var(--red); font-size: 1.1rem; margin-bottom: 10px;">🎪 PRIORITY FOCUS</h4>
+                        <div style="display: flex; flex-wrap: wrap; gap: 8px;">
+                            <span style="background: rgba(220, 38, 38, 0.2); padding: 6px 10px; border-radius: 15px; font-size: 0.85rem;">Health & MedTech</span>
+                            <span style="background: rgba(220, 38, 38, 0.2); padding: 6px 10px; border-radius: 15px; font-size: 0.85rem;">AI & Data Intelligence</span>
+                            <span style="background: rgba(220, 38, 38, 0.2); padding: 6px 10px; border-radius: 15px; font-size: 0.85rem;">Enterprise Solutions</span>
+                            <span style="background: rgba(220, 38, 38, 0.2); padding: 6px 10px; border-radius: 15px; font-size: 0.85rem;">Government & Civic</span>
+                            <span style="background: rgba(220, 38, 38, 0.2); padding: 6px 10px; border-radius: 15px; font-size: 0.85rem;">International prospects</span>
+                        </div>
+                    </div>
+                    <div>
+                        <h4 style="color: var(--red); font-size: 1.1rem; margin-bottom: 10px;">📋 TARGET LIST</h4>
+                        <div style="display: flex; flex-wrap: wrap; gap: 6px;">
+                            <span style="background: rgba(255,255,255,0.1); padding: 4px 8px; border-radius: 10px; font-size: 0.8rem;">Eli Lilly</span>
+                            <span style="background: rgba(255,255,255,0.1); padding: 4px 8px; border-radius: 10px; font-size: 0.8rem;">Abridge Health</span>
+                            <span style="background: rgba(255,255,255,0.1); padding: 4px 8px; border-radius: 10px; font-size: 0.8rem;">Cribl.io</span>
+                            <span style="background: rgba(255,255,255,0.1); padding: 4px 8px; border-radius: 10px; font-size: 0.8rem;">Unstructured</span>
+                            <span style="background: rgba(255,255,255,0.1); padding: 4px 8px; border-radius: 10px; font-size: 0.8rem;">CIA</span>
+                            <span style="background: rgba(255,255,255,0.1); padding: 4px 8px; border-radius: 10px; font-size: 0.8rem;">European Union</span>
+                            <span style="background: rgba(255,255,255,0.1); padding: 4px 8px; border-radius: 10px; font-size: 0.8rem;">CF VIP tour alumni</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+             <!-- Phase 3 -->
+            <div class="highlight-box" style="border-left: 5px solid var(--navy); background: linear-gradient(135deg, rgba(30, 58, 138, 0.1), rgba(30, 58, 138, 0.05));">
+                <div style="display: flex; align-items: center; margin-bottom: 20px;">
+                    <h3 style="color: #60A5FA; font-size: 1.5rem; margin-right: 15px;">⭐ Phase 3: Final Campaign Push</h3>
+                    <span style="background: var(--navy-gradient); color: var(--white); padding: 8px 16px; border-radius: 20px; font-weight: bold; font-size: 0.9rem;">December 2025-February 2026</span>
+                </div>
+                
+                <div style="background: rgba(0,0,0,0.3); padding: 20px; border-radius: 12px; margin-bottom: 20px;">
+                    <h4 style="color: var(--white); font-size: 1.2rem; margin-bottom: 10px;">🎯 STRATEGY</h4>
+                    <p style="font-size: 1rem; line-height: 1.6;">
+                        Traditional campaign launch for remaining inventory. Create <span style="color: #60A5FA;">urgency messaging</span> for mid-tier packages, offer last-minute opportunities for companies already attending SXSW.
+                    </p>
+                </div>
+                
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-bottom: 20px;">
+                    <div>
+                        <h4 style="color: #60A5FA; font-size: 1.1rem; margin-bottom: 10px;">🎪 PRIORITY FOCUS</h4>
+                        <div style="display: flex; flex-direction: column; gap: 8px;">
+                            <span style="background: var(--red-gradient); padding: 8px 12px; border-radius: 8px; font-size: 0.9rem; text-align: center;">Startup Crawl Title $55K</span>
+                            <span style="background: var(--gold-gradient); color: var(--black); padding: 8px 12px; border-radius: 8px; font-size: 0.9rem; text-align: center;">Howdy Lounge $30K</span>
+                            <span style="background: var(--navy-gradient); padding: 8px 12px; border-radius: 8px; font-size: 0.9rem; text-align: center;">Volume packages $5K-$15K</span>
+                        </div>
+                    </div>
+                    <div>
+                        <h4 style="color: #60A5FA; font-size: 1.1rem; margin-bottom: 10px;">📋 TARGET LIST</h4>
+                        <ul style="list-style: none; padding: 0;">
+                            <li style="padding: 4px 0; font-size: 0.95rem;">• SXSW exhibitors needing touchpoints</li>
+                            <li style="padding: 4px 0; font-size: 0.95rem;">• Local Austin businesses</li>
+                            <li style="padding: 4px 0; font-size: 0.95rem;">• Texas relocating companies</li>
+                            <li style="padding: 4px 0; font-size: 0.95rem;">• Apollo.io/ZoomInfo prospects</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Timeline Summary -->
+            <div style="margin-top: 30px; padding: 25px; background: rgba(255,255,255,0.05); border-radius: 15px; border: 2px solid var(--gold);">
+                <h4 style="color: var(--gold); text-align: center; font-size: 1.3rem; margin-bottom: 20px;">📊 Campaign Timeline Overview</h4>
+                <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; text-align: center;">
+                    <div style="padding: 15px; background: var(--gold-gradient); border-radius: 10px;">
+                        <div style="font-size: 1.5rem; font-weight: bold; color: var(--black);">60%</div>
+                        <div style="font-size: 0.9rem; color: var(--black); opacity: 0.8;">Renewal Focus</div>
+                    </div>
+                    <div style="padding: 15px; background: var(--red-gradient); border-radius: 10px;">
+                        <div style="font-size: 1.5rem; font-weight: bold; color: var(--white);">80%</div>
+                        <div style="font-size: 0.9rem; color: var(--white); opacity: 0.8;">New Business</div>
+                    </div>
+                    <div style="padding: 15px; background: var(--navy-gradient); border-radius: 10px;">
+                        <div style="font-size: 1.5rem; font-weight: bold; color: var(--white);">100%</div>
+                        <div style="font-size: 0.9rem; color: var(--white); opacity: 0.8;">Inventory Sold</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+<div class="content-section">
+            <h2 class="section-title">💡 New Business Development Strategy 💡</h2>
+            
+            <div class="highlight-box" style="background: linear-gradient(135deg, rgba(245, 158, 11, 0.15), rgba(220, 38, 38, 0.1)); border-left: 5px solid var(--gold);">
+                <h3 style="color: var(--gold); font-size: 1.4rem; margin-bottom: 20px;">📋 Mission: Expand Beyond Current Sponsor Base</h3>
+                
+                <div style="display: grid; gap: 20px; margin-bottom: 25px;">
+                    <div style="background: rgba(0,0,0,0.4); padding: 20px; border-radius: 12px;">
+                        <h4 style="color: var(--white); font-size: 1.1rem; margin-bottom: 10px;">🎯 Focus</h4>
+                        <p style="font-size: 1rem; line-height: 1.6;">
+                            Focus on <span class="text-highlight">net-new clients</span> Capital Factory hasn't partnered with before. Target emerging sectors and non-traditional sponsors for <span class="text-red">authentic startup ecosystem engagement</span>.
+                        </p>
+                    </div>
+                    <div style="background: rgba(0,0,0,0.4); padding: 20px; border-radius: 12px;">
+                        <h4 style="color: var(--white); font-size: 1.1rem; margin-bottom: 10px;">📊 Strategy</h4>
+                        <p style="font-size: 1rem; line-height: 1.6;">
+                            Leverage <span class="text-highlight">SXSW attendance data</span> and industry research to identify high-value prospects with <span class="text-gold">no current CF House presence</span>.
+                        </p>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Health & MedTech -->
+            <div class="highlight-box" style="border-left: 5px solid #EF4444;">
+                <h3 style="color: #EF4444; font-size: 1.3rem; margin-bottom: 20px;">🏥 Health & MedTech</h3>
+                <div style="display: grid; gap: 15px;">
+                    <div style="display: grid; grid-template-columns: 1fr auto; gap: 15px; align-items: center; background: rgba(239, 68, 68, 0.1); padding: 15px; border-radius: 10px;">
+                        <div>
+                            <strong style="color: var(--white);">Axle Health</strong> - AI-in-home health access and provider logistics
+                        </div>
+                        <span style="background: var(--navy-gradient); padding: 4px 8px; border-radius: 15px; font-size: 0.8rem;">VC Brunch</span>
+                    </div>
+                    <div style="display: grid; grid-template-columns: 1fr auto; gap: 15px; align-items: center; background: rgba(239, 68, 68, 0.1); padding: 15px; border-radius: 10px;">
+                        <div>
+                            <strong style="color: var(--white);">Eko Health</strong> - AI-enabled stethoscope demos, investor attraction
+                        </div>
+                        <span style="background: var(--red-gradient); padding: 4px 8px; border-radius: 15px; font-size: 0.8rem;">Founders Lounge</span>
+                    </div>
+                    <div style="display: grid; grid-template-columns: 1fr auto; gap: 15px; align-items: center; background: rgba(239, 68, 68, 0.1); padding: 15px; border-radius: 10px;">
+                        <div>
+                            <strong style="color: var(--white);">Sword Health</strong> - AI innovation
+                        </div>
+                        <span style="background: var(--gold-gradient); color: var(--black); padding: 4px 8px; border-radius: 15px; font-size: 0.8rem;">Startup Crawl/Podcast</span>
+                    </div>
+                    <div style="display: grid; grid-template-columns: 1fr auto; gap: 15px; align-items: center; background: rgba(239, 68, 68, 0.1); padding: 15px; border-radius: 10px;">
+                        <div>
+                            <strong style="color: var(--white);">Eli Lilly and Company</strong> - Pharma giant, no current CF presence
+                        </div>
+                        <span style="background: var(--red-gradient); padding: 4px 8px; border-radius: 15px; font-size: 0.8rem; font-weight: bold;">Founders Lounge</span>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Technology & SaaS -->
+            <div class="highlight-box" style="border-left: 5px solid var(--navy);">
+                <h3 style="color: #60A5FA; font-size: 1.3rem; margin-bottom: 20px;">💻 Technology & SaaS</h3>
+                <div style="display: grid; gap: 15px;">
+                    <div style="display: grid; grid-template-columns: 1fr auto; gap: 15px; align-items: center; background: rgba(30, 58, 138, 0.1); padding: 15px; border-radius: 10px;">
+                        <div>
+                            <strong style="color: var(--white);">Cribl.io</strong> - Data observability, enterprise-grade, no SXSW presence
+                        </div>
+                        <span style="background: var(--red-gradient); padding: 4px 8px; border-radius: 15px; font-size: 0.8rem; font-weight: bold;">Startup Crawl/VC Brunch</span>
+                    </div>
+                    <div style="display: grid; grid-template-columns: 1fr auto; gap: 15px; align-items: center; background: rgba(30, 58, 138, 0.1); padding: 15px; border-radius: 10px;">
+                        <div>
+                            <strong style="color: var(--white);">Kontent.ai</strong> - Headless CMS platform, dev teams, global reach
+                        </div>
+                        <span style="background: var(--gold-gradient); color: var(--black); padding: 4px 8px; border-radius: 15px; font-size: 0.8rem;">Startup Crawl/Founders</span>
+                    </div>
+                    <div style="display: grid; grid-template-columns: 1fr auto; gap: 15px; align-items: center; background: rgba(30, 58, 138, 0.1); padding: 15px; border-radius: 10px;">
+                        <div>
+                            <strong style="color: var(--white);">SleekFlow</strong> - Conversational AI, SEA-focused, fresh to US market
+                        </div>
+                        <span style="background: var(--gold-gradient); color: var(--black); padding: 4px 8px; border-radius: 15px; font-size: 0.8rem;">Howdy Lounge</span>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- AI & Data Intelligence -->
+            <div class="highlight-box" style="border-left: 5px solid var(--gold);">
+                <h3 style="color: var(--gold); font-size: 1.3rem; margin-bottom: 20px;">🤖 AI & Data Intelligence</h3>
+                <div style="display: grid; gap: 15px;">
+                    <div style="display: grid; grid-template-columns: 1fr auto; gap: 15px; align-items: center; background: rgba(245, 158, 11, 0.1); padding: 15px; border-radius: 10px;">
+                        <div>
+                            <strong style="color: var(--white);">Unstructured</strong> - Open-source, developer-heavy brand
+                        </div>
+                        <span style="background: var(--red-gradient); padding: 4px 8px; border-radius: 15px; font-size: 0.8rem;">Crawl Title/Salon</span>
+                    </div>
+                    <div style="display: grid; grid-template-columns: 1fr auto; gap: 15px; align-items: center; background: rgba(245, 158, 11, 0.1); padding: 15px; border-radius: 10px;">
+                        <div>
+                            <strong style="color: var(--white);">Vannevar Labs</strong> - High-growth defense analytics
+                        </div>
+                        <span style="background: var(--gold-gradient); color: var(--black); padding: 4px 8px; border-radius: 15px; font-size: 0.8rem;">Office Hours/Salon</span>
+                    </div>
+                    <div style="display: grid; grid-template-columns: 1fr auto; gap: 15px; align-items: center; background: rgba(245, 158, 11, 0.1); padding: 15px; border-radius: 10px;">
+                        <div>
+                            <strong style="color: var(--white);">Air Space Intelligence</strong> - Defense + AI = niche gravity
+                        </div>
+                        <span style="background: var(--red-gradient); padding: 4px 8px; border-radius: 15px; font-size: 0.8rem;">Founders Lounge/Salon</span>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Government & Civic -->
+            <div class="highlight-box" style="border-left: 5px solid #8B5CF6; background: linear-gradient(135deg, rgba(139, 92, 246, 0.1), rgba(139, 92, 246, 0.05));">
+                <h3 style="color: #A78BFA; font-size: 1.3rem; margin-bottom: 20px;">🏛️ Government & Civic</h3>
+                <div style="display: grid; gap: 15px;">
+                    <div style="display: grid; grid-template-columns: 1fr auto; gap: 15px; align-items: center; background: rgba(139, 92, 246, 0.15); padding: 15px; border-radius: 10px; border: 2px solid rgba(139, 92, 246, 0.3);">
+                        <div>
+                            <strong style="color: var(--white);">Central Intelligence Agency</strong> - Novel government presence
+                        </div>
+                        <span style="background: var(--red-gradient); padding: 4px 8px; border-radius: 15px; font-size: 0.8rem; font-weight: bold;">🔥 HIGH VALUE</span>
+                    </div>
+                    <div style="display: grid; grid-template-columns: 1fr auto; gap: 15px; align-items: center; background: rgba(139, 92, 246, 0.1); padding: 15px; border-radius: 10px;">
+                        <div>
+                            <strong style="color: var(--white);">European Union</strong> - Civic/tourism, no CF history
+                        </div>
+                        <span style="background: var(--gold-gradient); color: var(--black); padding: 4px 8px; border-radius: 15px; font-size: 0.8rem;">International</span>
+                    </div>
+                    <div style="display: grid; grid-template-columns: 1fr auto; gap: 15px; align-items: center; background: rgba(139, 92, 246, 0.1); padding: 15px; border-radius: 10px;">
+                        <div>
+                            <strong style="color: var(--white);">Enterprise Ireland</strong> - Cultural + startup support org
+                        </div>
+                        <span style="background: var(--navy-gradient); padding: 4px 8px; border-radius: 15px; font-size: 0.8rem;">Government</span>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Texas Business Development -->
+            <div class="highlight-box" style="border-left: 5px solid #F97316; background: rgba(249, 115, 22, 0.05);">
+                <h3 style="color: #FB923C; font-size: 1.3rem; margin-bottom: 20px;">🏢 Texas Business Development</h3>
+                <div style="display: grid; gap: 15px;">
+                    <div style="display: grid; grid-template-columns: 1fr auto; gap: 15px; align-items: center; background: rgba(249, 115, 22, 0.1); padding: 15px; border-radius: 10px;">
+                        <div>
+                            <strong style="color: var(--white);">City Economic Development</strong> - Austin, Dallas, Houston EDCs
+                        </div>
+                        <span style="background: var(--gold-gradient); color: var(--black); padding: 4px 8px; border-radius: 15px; font-size: 0.8rem;">Local Partnership</span>
+                    </div>
+                    <div style="display: grid; grid-template-columns: 1fr auto; gap: 15px; align-items: center; background: rgba(249, 115, 22, 0.1); padding: 15px; border-radius: 10px;">
+                        <div>
+                            <strong style="color: var(--white);">Chamber of Commerce</strong> - Statewide partnerships
+                        </div>
+                        <span style="background: var(--navy-gradient); padding: 4px 8px; border-radius: 15px; font-size: 0.8rem;">Network Access</span>
+                    </div>
+                    <div style="display: grid; grid-template-columns: 1fr auto; gap: 15px; align-items: center; background: rgba(249, 115, 22, 0.1); padding: 15px; border-radius: 10px;">
+                        <div>
+                            <strong style="color: var(--white);">Corporate Relocations</strong> - Companies moving to Texas
+                        </div>
+                        <span style="background: var(--red-gradient); padding: 4px 8px; border-radius: 15px; font-size: 0.8rem;">New Market Entry</span>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- International VIP Network -->
+            <div class="highlight-box" style="border-left: 5px solid #8B5CF6; background: linear-gradient(135deg, rgba(139, 92, 246, 0.1), rgba(139, 92, 246, 0.05));">
+                <h3 style="color: #A78BFA; font-size: 1.3rem; margin-bottom: 20px;">🌍 International VIP Network</h3>
+                <div style="display: grid; gap: 15px;">
+                    <div style="display: grid; grid-template-columns: 1fr auto; gap: 15px; align-items: center; background: rgba(139, 92, 246, 0.1); padding: 15px; border-radius: 10px;">
+                        <div>
+                            <strong style="color: var(--white);">CF Tour Alumni</strong> - International visitors from facility tours
+                        </div>
+                        <span style="background: var(--gold-gradient); color: var(--black); padding: 4px 8px; border-radius: 15px; font-size: 0.8rem;">VIP Access</span>
+                    </div>
+                    <div style="display: grid; grid-template-columns: 1fr auto; gap: 15px; align-items: center; background: rgba(139, 92, 246, 0.1); padding: 15px; border-radius: 10px;">
+                        <div>
+                            <strong style="color: var(--white);">Global Delegations</strong> - Government/trade missions
+                        </div>
+                        <span style="background: var(--navy-gradient); padding: 4px 8px; border-radius: 15px; font-size: 0.8rem;">Trade Missions</span>
+                    </div>
+                    <div style="display: grid; grid-template-columns: 1fr auto; gap: 15px; align-items: center; background: rgba(139, 92, 246, 0.1); padding: 15px; border-radius: 10px;">
+                        <div>
+                            <strong style="color: var(--white);">Embassy Connections</strong> - Diplomatic economic teams
+                        </div>
+                        <span style="background: var(--red-gradient); padding: 4px 8px; border-radius: 15px; font-size: 0.8rem;">Diplomatic</span>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Emerging Sectors -->
+            <div class="highlight-box" style="border-left: 5px solid #06B6D4; background: rgba(6, 182, 212, 0.05);">
+                <h3 style="color: #22D3EE; font-size: 1.3rem; margin-bottom: 20px;">🚀 Emerging Sectors</h3>
+                <div style="display: grid; gap: 15px;">
+                    <div style="display: grid; grid-template-columns: 1fr auto; gap: 15px; align-items: center; background: rgba(6, 182, 212, 0.1); padding: 15px; border-radius: 10px;">
+                        <div>
+                            <strong style="color: var(--white);">Climate Tech</strong> - Sustainability-focused companies
+                        </div>
+                        <span style="background: linear-gradient(135deg, #10B981, #059669); padding: 4px 8px; border-radius: 15px; font-size: 0.8rem;">🌱 ESG Focus</span>
+                    </div>
+                    <div style="display: grid; grid-template-columns: 1fr auto; gap: 15px; align-items: center; background: rgba(6, 182, 212, 0.1); padding: 15px; border-radius: 10px;">
+                        <div>
+                            <strong style="color: var(--white);">Web3/Blockchain</strong> - Crypto companies seeking legitimacy
+                        </div>
+                        <span style="background: var(--gold-gradient); color: var(--black); padding: 4px 8px; border-radius: 15px; font-size: 0.8rem;">₿ Legitimacy</span>
+                    </div>
+                    <div style="display: grid; grid-template-columns: 1fr auto; gap: 15px; align-items: center; background: rgba(6, 182, 212, 0.1); padding: 15px; border-radius: 10px;">
+                        <div>
+                            <strong style="color: var(--white);">EdTech</strong> - Education technology platforms
+                        </div>
+                        <span style="background: var(--navy-gradient); padding: 4px 8px; border-radius: 15px; font-size: 0.8rem;">🎓 Education</span>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Lead Generation Tools -->
+            <div class="highlight-box" style="border-left: 5px solid #10B981; background: rgba(16, 185, 129, 0.05);">
+                <h3 style="color: #34D399; font-size: 1.3rem; margin-bottom: 20px;">⚙️ Lead Generation Tools</h3>
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 15px;">
+                    <div style="background: rgba(16, 185, 129, 0.1); padding: 15px; border-radius: 10px; text-align: center;">
+                        <strong style="color: #34D399;">Apollo.io</strong><br>
+                        <span style="font-size: 0.9rem; opacity: 0.8;">B2B contact database</span>
+                    </div>
+                    <div style="background: rgba(16, 185, 129, 0.1); padding: 15px; border-radius: 10px; text-align: center;">
+                        <strong style="color: #34D399;">ZoomInfo</strong><br>
+                        <span style="font-size: 0.9rem; opacity: 0.8;">Company intelligence</span>
+                    </div>
+                    <div style="background: rgba(16, 185, 129, 0.1); padding: 15px; border-radius: 10px; text-align: center;">
+                        <strong style="color: #34D399;">LinkedIn Sales Navigator</strong><br>
+                        <span style="font-size: 0.9rem; opacity: 0.8;">Social selling platform</span>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Zero SXSW Exposure Strategy -->
+            <div style="margin-top: 30px; padding: 25px; background: linear-gradient(135deg, rgba(220, 38, 38, 0.2), rgba(245, 158, 11, 0.2)); border-radius: 15px; border: 3px solid var(--gold);">
+                <h3 style="color: var(--gold); text-align: center; font-size: 1.4rem; margin-bottom: 20px;">📊 Zero SXSW Exposure Strategy</h3>
+                <div style="background: rgba(0,0,0,0.5); padding: 20px; border-radius: 12px;">
+                    <h4 style="color: var(--white); font-size: 1.1rem; margin-bottom: 10px;">🔍 Research Methodology</h4>
+                    <p style="font-size: 1rem; line-height: 1.7; text-align: center;">
+                        Target companies with <span class="text-red">no current SXSW presence</span>. This ensures we're not competing with existing relationships and can position <span class="text-highlight">CF House as their first official SXSW touchpoint</span>.
+                    </p>
+                </div>
+                
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 15px; margin-top: 20px; text-align: center;">
+                    <div style="background: var(--red-gradient); padding: 15px; border-radius: 10px;">
+                        <div style="font-size: 1.5rem; font-weight: bold;">8</div>
+                        <div style="font-size: 0.9rem; opacity: 0.9;">Health & MedTech</div>
+                    </div>
+                    <div style="background: var(--navy-gradient); padding: 15px; border-radius: 10px;">
+                        <div style="font-size: 1.5rem; font-weight: bold;">7</div>
+                        <div style="font-size: 0.9rem; opacity: 0.9;">Technology & SaaS</div>
+                    </div>
+                    <div style="background: var(--gold-gradient); color: var(--black); padding: 15px; border-radius: 10px;">
+                        <div style="font-size: 1.5rem; font-weight: bold;">3</div>
+                        <div style="font-size: 0.9rem; opacity: 0.8;">AI & Data Intelligence</div>
+                    </div>
+                    <div style="background: var(--navy-gradient); padding: 15px; border-radius: 10px;">
+                        <div style="font-size: 1.5rem; font-weight: bold;">6</div>
+                        <div style="font-size: 0.9rem; opacity: 0.9;">International & Emerging</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+   <div class="content-section">
+            <h2 class="section-title">⚙️ Sponsorship Inventory Overview ⚙️</h2>
+            
+            <!-- Premium Tier -->
+            <div class="highlight-box" style="background: linear-gradient(135deg, rgba(220, 38, 38, 0.2), rgba(220, 38, 38, 0.1)); border-left: 5px solid var(--red);">
+                <h3 style="color: var(--red); font-size: 1.4rem; margin-bottom: 25px; text-align: center;">💎 Premium Tier ($55K - $60K)</h3>
+                
+                <div style="display: grid; gap: 20px;">
+                    <!-- Founders Lounge -->
+                    <div style="background: var(--red-gradient); padding: 25px; border-radius: 15px; box-shadow: 0 15px 35px rgba(220, 38, 38, 0.4); transform: scale(1.02); position: relative; overflow: hidden;">
+                        <div style="position: absolute; top: 10px; right: 15px; background: rgba(255,255,255,0.2); padding: 5px 10px; border-radius: 20px; font-size: 0.8rem; font-weight: bold;">👑 FLAGSHIP</div>
+                        <div style<
+.6; color: var(--white);">
+                            Sector-specific events within CF House
+                        </p>
+                    </div>
+                    
+                    <div style="background: rgba(6, 182, 212, 0.15); padding: 20px; border-radius: 15px; border-left: 4px solid #06B6D4;">
+                        <h4 style="color: #22D3EE; font-size: 1.2rem; font-weight: bold; margin-bottom: 10px;">💼 Executive roundtables</h4>
+                        <p style="font-size: 1rem; line-height: 1.6; color: var(--white);">
+                            C-suite networking premium experiences
+                        </p>
+                    </div>
+                    
+                    <div style="background: rgba(6, 182, 212, 0.15); padding: 20px; border-radius: 15px; border-left: 4px solid #06B6D4;">
+                        <h4 style="color: #22D3EE; font-size: 1.2rem; font-weight: bold; margin-bottom: 10px;">🚀 Demo showcase booths</h4>
+                        <p style="font-size: 1rem; line-height: 1.6; color: var(--white);">
+                            Product demonstration premium spaces
+                        </p>
+                    </div>
+                </div>
+            </div>
+<div style="display: grid; gap: 20px;">
+                    <div style="background: rgba(6, 182, 212, 0.15); padding: 20px; border-radius: 15px; border-left: 4px solid #06B6D4;">
+                        <h4 style="color: #22D3EE; font-size: 1.2rem; font-weight: bold; margin-bottom: 10px;">🎪 Industry summits</h4>
+                        <p style="font-size: 1rem; line-height: 1                        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px;">
+                            <h4 style="color: var(--white); font-size: 1.6rem; font-weight: bold;">Founders Lounge</h4>
+                            <div style="text-align: right;">
+                                <div style="font-size: 2rem; font-weight: bold; color: var(--white);">$60,000</div>
+                                <div style="font-size: 0.9rem; opacity: 0.9;">Premium Package</div>
+                            </div>
+                        </div>
+                        <p style="font-size: 1.1rem; line-height: 1.6; margin-bottom: 15px;">
+                            Exclusive 5th floor access, 10 reps, branded lounge
+                        </p>
+                        <div style="display: flex; gap: 10px; flex-wrap: wrap;">
+                            <span style="background: rgba(255,255,255,0.15); padding: 6px 12px; border-radius: 15px; font-size: 0.9rem;">🏢 5th Floor Exclusive</span>
+                            <span style="background: rgba(255,255,255,0.15); padding: 6px 12px; border-radius: 15px; font-size: 0.9rem;">👥 10 Reps</span>
+                            <span style="background: rgba(255,255,255,0.15); padding: 6px 12px; border-radius: 15px; font-size: 0.9rem;">🎨 Branded Space</span>
+                        </div>
+                    </div>
+          <!-- Startup Crawl Title -->
+                    <div style="background: var(--red-gradient); padding: 25px; border-radius: 15px; box-shadow: 0 12px 30px rgba(220, 38, 38, 0.3); position: relative; overflow: hidden;">
+                        <div style="position: absolute; top: 10px; right: 15px; background: rgba(255,255,255,0.2); padding: 5px 10px; border-radius: 20px; font-size: 0.8rem; font-weight: bold;">🎉 ICONIC</div>
+                        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px;">
+                            <h4 style="color: var(--white); font-size: 1.6rem; font-weight: bold;">Startup Crawl Title</h4>
+                            <div style="text-align: right;">
+                                <div style="font-size: 2rem; font-weight: bold; color: var(--white);">$55,000</div>
+                                <div style="font-size: 0.9rem; opacity: 0.9;">Title Sponsor</div>
+                            </div>
+                        </div>
+                        <p style="font-size: 1.1rem; line-height: 1.6; margin-bottom: 15px;">
+                            Title sponsor of biggest SXSW party since 2011
+                        </p>
+                        <div style="display: flex; gap: 10px; flex-wrap: wrap;">
+                            <span style="background: rgba(255,255,255,0.15); padding: 6px 12px; border-radius: 15px; font-size: 0.9rem;">🏆 Title Sponsor</span>
+                            <span style="background: rgba(255,255,255,0.15); padding: 6px 12px; border-radius: 15px; font-size: 0.9rem;">🎊 Biggest Party</span>
+                            <span style="background: rgba(255,255,255,0.15); padding: 6px 12px; border-radius: 15px; font-size: 0.9rem;">📅 Since 2011</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Mid-Tier -->
+            <div class="highlight-box" style="background: linear-gradient(135deg, rgba(245, 158, 11, 0.15), rgba(245, 158, 11, 0.1)); border-left: 5px solid var(--gold);">
+                <h3 style="color: var(--gold); font-size: 1.4rem; margin-bottom: 25px; text-align: center;">⭐ Mid-Tier ($30K - $35K)</h3>
+                
+                <div style="display: grid; gap: 20px;">
+                    <!-- Secret Salon -->
+                    <div style="background: var(--gold-gradient); color: var(--black); padding: 20px; border-radius: 15px; box-shadow: 0 10px 25px rgba(245, 158, 11, 0.3);">
+                        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px;">
+                            <h4 style="font-size: 1.4rem; font-weight: bold;">Secret Salon</h4>
+                            <div style="text-align: right;">
+                                <div style="font-size: 1.8rem; font-weight: bold;">$35,000</div>
+                                <div style="font-size: 0.9rem; opacity: 0.8;">VIP Experience</div>
+                            </div>
+                        </div>
+                        <p style="font-size: 1rem; line-height: 1.6; margin-bottom: 15px;">
+                            Co-host Joshua Baer's exclusive founder VIP list
+                        </p>
+                        <div style="display: flex; gap: 10px; flex-wrap: wrap;">
+                            <span style="background: rgba(0,0,0,0.15); padding: 6px 12px; border-radius: 15px; font-size: 0.9rem;">🤝 Co-Host</span>
+                            <span style="background: rgba(0,0,0,0.15); padding: 6px 12px; border-radius: 15px; font-size: 0.9rem;">👑 VIP List</span>
+                            <span style="background: rgba(0,0,0,0.15); padding: 6px 12px; border-radius: 15px; font-size: 0.9rem;">🎯 Founders</span>
+                        </div>
+                    </div>
+                    
+                    <!-- VC Brunch & Howdy Lounge -->
+                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px;">
+                        <div style="background: var(--navy-gradient); padding: 20px; border-radius: 15px; box-shadow: 0 8px 20px rgba(30, 58, 138, 0.3);">
+                            <div style="text-align: center; margin-bottom: 15px;">
+                                <h4 style="color: var(--white); font-size: 1.3rem; font-weight: bold;">VC Brunch</h4>
+                                <div style="font-size: 1.6rem; font-weight: bold; color: var(--white); margin: 10px 0;">$30,000</div>
+                            </div>
+                            <p style="font-size: 0.95rem; line-height: 1.5; margin-bottom: 15px; text-align: center;">
+                                Exclusive investor networking, 10 reps
+                            </p>
+                            <div style="display: flex; gap: 8px; flex-wrap: wrap; justify-content: center;">
+                                <span style="background: rgba(255,255,255,0.15); padding: 4px 8px; border-radius: 12px; font-size: 0.8rem;">💼 Investors</span>
+                                <span style="background: rgba(255,255,255,0.15); padding: 4px 8px; border-radius: 12px; font-size: 0.8rem;">👥 10 Reps</span>
+                            </div>
+                        </div>
+                        
+                        <div style="background: var(--gold-gradient); color: var(--black); padding: 20px; border-radius: 15px; box-shadow: 0 8px 20px rgba(245, 158, 11, 0.3);">
+                            <div style="text-align: center; margin-bottom: 15px;">
+                                <h4 style="font-size: 1.3rem; font-weight: bold;">Howdy Lounge</h4>
+                                <div style="font-size: 1.6rem; font-weight: bold; margin: 10px 0;">$30,000</div>
+                            </div>
+                            <p style="font-size: 0.95rem; line-height: 1.5; margin-bottom: 15px; text-align: center;">
+                                First impression check-in hub, 5 reps
+                            </p>
+                            <div style="display: flex; gap: 8px; flex-wrap: wrap; justify-content: center;">
+                                <span style="background: rgba(0,0,0,0.15); padding: 4px 8px; border-radius: 12px; font-size: 0.8rem;">🚪 Check-in</span>
+                                <span style="background: rgba(0,0,0,0.15); padding: 4px 8px; border-radius: 12px; font-size: 0.8rem;">👥 5 Reps</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Entry-Tier -->
+            <div class="highlight-box" style="background: linear-gradient(135deg, rgba(30, 58, 138, 0.15), rgba(30, 58, 138, 0.1)); border-left: 5px solid var(--navy);">
+                <h3 style="color: #60A5FA; font-size: 1.4rem; margin-bottom: 25px; text-align: center;">🎯 Entry-Tier ($5K - $15K)</h3>
+                
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px;">
+                    <!-- Happy Hour -->
+                    <div style="background: var(--navy-gradient); padding: 20px; border-radius: 12px; box-shadow: 0 6px 15px rgba(30, 58, 138, 0.3);">
+                        <div style="text-align: center; margin-bottom: 10px;">
+                            <h4 style="color: var(--white); font-size: 1.2rem; font-weight: bold;">Happy Hour</h4>
+                            <div style="font-size: 1.4rem; font-weight: bold; color: var(--white); margin: 8px 0;">$15,000</div>
+                        </div>
+                        <p style="font-size: 0.9rem; line-height: 1.4; margin-bottom: 12px; text-align: center;">
+                            Daily networking events, 2 reps
+                        </p>
+                        <div style="display: flex; gap: 6px; flex-wrap: wrap; justify-content: center;">
+                            <span style="background: rgba(255,255,255,0.15); padding: 3px 8px; border-radius: 10px; font-size: 0.75rem;">📅 Daily</span>
+                            <span style="background: rgba(255,255,255,0.15); padding: 3px 8px; border-radius: 10px; font-size: 0.75rem;">👥 2 Reps</span>
+                        </div>
+                    </div>
+                    
+                    <!-- Startup Crawl Megastop -->
+                    <div style="background: var(--red-gradient); padding: 20px; border-radius: 12px; box-shadow: 0 6px 15px rgba(220, 38, 38, 0.3);">
+                        <div style="text-align: center; margin-bottom: 10px;">
+                            <h4 style="color: var(--white); font-size: 1.2rem; font-weight: bold;">Startup Crawl Megastop</h4>
+                            <div style="font-size: 1.4rem; font-weight: bold; color: var(--white); margin: 8px 0;">$10,000</div>
+                        </div>
+                        <p style="font-size: 0.9rem; line-height: 1.4; margin-bottom: 12px; text-align: center;">
+                            Premium activation at biggest crawl stop
+                        </p>
+                        <div style="display: flex; gap: 6px; flex-wrap: wrap; justify-content: center;">
+                            <span style="background: rgba(255,255,255,0.15); padding: 3px 8px; border-radius: 10px; font-size: 0.75rem;">🎯 Premium</span>
+                            <span style="background: rgba(255,255,255,0.15); padding: 3px 8px; border-radius: 10px; font-size: 0.75rem;">🚀 Biggest</span>
+                        </div>
+                    </div>
+                    
+                    <!-- Cup of Capital -->
+                    <div style="background: var(--gold-gradient); color: var(--black); padding: 20px; border-radius: 12px; box-shadow: 0 6px 15px rgba(245, 158, 11, 0.3);">
+                        <div style="text-align: center; margin-bottom: 10px;">
+                            <h4 style="font-size: 1.2rem; font-weight: bold;">Cup of Capital</h4>
+                            <div style="font-size: 1.4rem; font-weight: bold; margin: 8px 0;">$5,000</div>
+                        </div>
+                        <p style="font-size: 0.9rem; line-height: 1.4; margin-bottom: 12px; text-align: center;">
+                            Morning coffee networking event branding
+                        </p>
+                        <div style="display: flex; gap: 6px; flex-wrap: wrap; justify-content: center;">
+                            <span style="background: rgba(0,0,0,0.15); padding: 3px 8px; border-radius: 10px; font-size: 0.75rem;">☕ Morning</span>
+                            <span style="background: rgba(0,0,0,0.15); padding: 3px 8px; border-radius: 10px; font-size: 0.75rem;">🤝 Networking</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Inventory Summary -->
+            <div style="margin-top: 30px; padding: 25px; background: rgba(255,255,255,0.05); border-radius: 15px; border: 2px solid var(--gold);">
+                <h4 style="color: var(--gold); text-align: center; font-size: 1.3rem; margin-bottom: 20px;">📊 Total Inventory Value</h4>
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 20px; text-align: center;">
+                    <div style="padding: 20px; background: var(--red-gradient); border-radius: 12px;">
+                        <div style="font-size: 2rem; font-weight: bold; color: var(--white);">$115K</div>
+                        <div style="font-size: 0.9rem; color: var(--white); opacity: 0.9;">Premium Tier</div>
+                        <div style="font-size: 0.8rem; color: var(--white); opacity: 0.7;">2 Packages</div>
+                    </div>
+                    <div style="padding: 20px; background: var(--gold-gradient); color: var(--black); border-radius: 12px;">
+                        <div style="font-size: 2rem; font-weight: bold;">$95K</div>
+                        <div style="font-size: 0.9rem; opacity: 0.9;">Mid-Tier</div>
+                        <div style="font-size: 0.8rem; opacity: 0.7;">3 Packages</div>
+                    </div>
+                    <div style="padding: 20px; background: var(--navy-gradient); border-radius: 12px;">
+                        <div style="font-size: 2rem; font-weight: bold; color: var(--white);">$30K</div>
+                        <div style="font-size: 0.9rem; color: var(--white); opacity: 0.9;">Entry-Tier</div>
+                        <div style="font-size: 0.8rem; color: var(--white); opacity: 0.7;">3 Packages</div>
+                    </div>
+                    <div style="padding: 20px; background: linear-gradient(135deg, var(--red), var(--gold)); border-radius: 12px;">
+                        <div style="font-size: 2rem; font-weight: bold; color: var(--white);">$240K</div>
+                        <div style="font-size: 0.9rem; color: var(--white); opacity: 0.9;">Total Value</div>
+                        <div style="font-size: 0.8rem; color: var(--white); opacity: 0.7;">8 Packages</div>
+                    </div>
+                </div>
+            </div>
+        </div> 
+class="content-section">
+            <h2 class="section-title">📅 Strategic Timeline & Renewal Cycle 📅</h2>
+            
+            <!-- Key Insight -->
+            <div class="highlight-box" style="background: linear-gradient(135deg, rgba(245, 158, 11, 0.2), rgba(220, 38, 38, 0.15)); border-left: 5px solid var(--gold); border: 2px solid var(--gold);">
+                <h3 style="color: var(--gold); font-size: 1.5rem; margin-bottom: 20px; text-align: center;">✨ Key Insight: 60% Repeat Customer Base ✨</h3>
+                <div style="background: rgba(0,0,0,0.4); padding: 25px; border-radius: 15px; text-align: center;">
+                    <p style="font-size: 1.2rem; line-height: 1.7; color: var(--white);">
+                        Capital Factory's proven renewal strategy: <span class="text-highlight">Immediate post-event outreach</span> captures sponsors for the following year while <span class="text-red">ROI is fresh</span> and relationships are strongest.
+                    </p>
+                </div>
+            </div>
+            
+            <!-- Timeline -->
+            <div class="highlight-box" style="background: rgba(255,255,255,0.03); border-left: 5px solid var(--navy);">
+                <div style="position: relative;">
+                    <!-- Timeline Line -->
+                    <div style="position: absolute; left: 30px; top: 0; bottom: 0; width: 4px; background: linear-gradient(180deg, var(--gold), var(--red), var(--navy)); border-radius: 2px;"></div>
+                    
+                    <!-- Timeline Items -->
+                    <div style="display: flex; flex-direction: column; gap: 30px; padding-left: 80px;">
+                        
+                        <!-- March 17, 2025 -->
+                        <div style="position: relative;">
+                            <div style="position: absolute; left: -65px; top: 5px; width: 20px; height: 20px; background: var(--gold); border-radius: 50%; border: 3px solid var(--white); box-shadow: 0 0 10px var(--gold);"></div>
+                            <div style="background: var(--gold-gradient); color: var(--black); padding: 20px; border-radius: 15px; box-shadow: 0 8px 25px rgba(245, 158, 11, 0.3);">
+                                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px;">
+                                    <h4 style="font-size: 1.3rem; font-weight: bold;">Post-Event Renewal Launch</h4>
+                                    <span style="background: rgba(0,0,0,0.2); padding: 6px 12px; border-radius: 20px; font-weight: bold; font-size: 0.9rem;">March 17, 2025</span>
+                                </div>
+                                <p style="font-size: 1rem; line-height: 1.6;">
+                                    Begin 2026 renewals immediately after CF House 2025 ends - <span style="font-weight: bold;">strike while ROI is hot</span> and relationships are peak
+                                </p>
+                            </div>
+                        </div>
+                        
+                        <!-- April-May 2025 -->
+                        <div style="position: relative;">
+                            <div style="position: absolute; left: -65px; top: 5px; width: 20px; height: 20px; background: var(--gold); border-radius: 50%; border: 3px solid var(--white); box-shadow: 0 0 10px var(--gold);"></div>
+                            <div style="background: rgba(245, 158, 11, 0.15); border: 2px solid var(--gold); padding: 20px; border-radius: 15px;">
+                                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px;">
+                                    <h4 style="color: var(--gold); font-size: 1.3rem; font-weight: bold;">Renewal Priority Phase</h4>
+                                    <span style="background: var(--gold-gradient); color: var(--black); padding: 6px 12px; border-radius: 20px; font-weight: bold; font-size: 0.9rem;">April-May 2025</span>
+                                </div>
+                                <p style="font-size: 1rem; line-height: 1.6; color: var(--white);">
+                                    Focus on 2025 sponsors first (<span class="text-highlight">60% of business</span>) - secure commitments with early-bird pricing and preferred package selection
+                                </p>
+                            </div>
+                        </div>
+                        
+                        <!-- June-Nov 2025 -->
+                        <div style="position: relative;">
+                            <div style="position: absolute; left: -65px; top: 5px; width: 20px; height: 20px; background: var(--red); border-radius: 50%; border: 3px solid var(--white); box-shadow: 0 0 10px var(--red);"></div>
+                            <div style="background: var(--red-gradient); padding: 20px; border-radius: 15px; box-shadow: 0 8px 25px rgba(220, 38, 38, 0.3);">
+                                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px;">
+                                    <h4 style="color: var(--white); font-size: 1.3rem; font-weight: bold;">New Business Development</h4>
+                                    <span style="background: rgba(255,255,255,0.2); padding: 6px 12px; border-radius: 20px; font-weight: bold; font-size: 0.9rem;">June-Nov 2025</span>
+                                </div>
+                                <p style="font-size: 1rem; line-height: 1.6;">
+                                    Target net-new sponsors while renewals are locked. Use <span style="color: var(--gold); font-weight: bold;">renewal success stories as social proof</span> for prospects
+                                </p>
+                            </div>
+                        </div>
+                        
+                        <!-- Dec 15, 2025 -->
+                        <div style="position: relative;">
+                            <div style="position: absolute; left: -65px; top: 5px; width: 20px; height: 20px; background: var(--navy); border-radius: 50%; border: 3px solid var(--white); box-shadow: 0 0 10px var(--navy);"></div>
+                            <div style="background: var(--navy-gradient); padding: 20px; border-radius: 15px; box-shadow: 0 8px 25px rgba(30, 58, 138, 0.3);">
+                                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px;">
+                                    <h4 style="color: var(--white); font-size: 1.3rem; font-weight: bold;">Official 2026 Campaign Launch</h4>
+                                    <span style="background: rgba(255,255,255,0.2); padding: 6px 12px; border-radius: 20px; font-weight: bold; font-size: 0.9rem;">Dec 15, 2025</span>
+                                </div>
+                                <p style="font-size: 1rem; line-height: 1.6;">
+                                    Full outreach begins for remaining inventory with <span style="color: var(--gold); font-weight: bold;">urgency messaging</span>
+                                </p>
+                            </div>
+                        </div>
+                        
+                        <!-- Jan 15, 2026 -->
+                        <div style="position: relative;">
+                            <div style="position: absolute; left: -65px; top: 5px; width: 20px; height: 20px; background: var(--red); border-radius: 50%; border: 3px solid var(--white); box-shadow: 0 0 10px var(--red);"></div>
+                            <div style="background: rgba(220, 38, 38, 0.15); border: 2px solid var(--red); padding: 20px; border-radius: 15px;">
+                                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px;">
+                                    <h4 style="color: var(--red); font-size: 1.3rem; font-weight: bold;">Premium Tier Deadline</h4>
+                                    <span style="background: var(--red-gradient); color: var(--white); padding: 6px 12px; border-radius: 20px; font-weight: bold; font-size: 0.9rem;">Jan 15, 2026</span>
+                                </div>
+                                <p style="font-size: 1rem; line-height: 1.6; color: var(--white);">
+                                    Founders Lounge, Secret Salon target close date
+                                </p>
+                            </div>
+                        </div>
+                        
+                        <!-- Feb 1, 2026 -->
+                        <div style="position: relative;">
+                            <div style="position: absolute; left: -65px; top: 5px; width: 20px; height: 20px; background: var(--gold); border-radius: 50%; border: 3px solid var(--white); box-shadow: 0 0 10px var(--gold);"></div>
+                            <div style="background: rgba(245, 158, 11, 0.15); border: 2px solid var(--gold); padding: 20px; border-radius: 15px;">
+                                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px;">
+                                    <h4 style="color: var(--gold); font-size: 1.3rem; font-weight: bold;">Mid-Tier Focus Shift</h4>
+                                    <span style="background: var(--gold-gradient); color: var(--black); padding: 6px 12px; border-radius: 20px; font-weight: bold; font-size: 0.9rem;">Feb 1, 2026</span>
+                                </div>
+                                <p style="font-size: 1rem; line-height: 1.6; color: var(--white);">
+                                    Startup Crawl, lounges, and mid-range packages
+                                </p>
+                            </div>
+                        </div>
+                        
+                        <!-- Feb 20, 2026 -->
+                        <div style="position: relative;">
+                            <div style="position: absolute; left: -65px; top: 5px; width: 20px; height: 20px; background: var(--navy); border-radius: 50%; border: 3px solid var(--white); box-shadow: 0 0 10px var(--navy);"></div>
+                            <div style="background: var(--navy-gradient); padding: 20px; border-radius: 15px; box-shadow: 0 8px 25px rgba(30, 58, 138, 0.3);">
+                                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px;">
+                                    <h4 style="color: var(--white); font-size: 1.3rem; font-weight: bold;">Final Push Begins</h4>
+                                    <span style="background: rgba(255,255,255,0.2); padding: 6px 12px; border-radius: 20px; font-weight: bold; font-size: 0.9rem;">Feb 20, 2026</span>
+                                </div>
+                                <p style="font-size: 1rem; line-height: 1.6;">
+                                    Last chance outreach for remaining inventory
+                                </p>
+                            </div>
+                        </div>
+                        
+                        <!-- Feb 26, 2026 -->
+                        <div style="position: relative;">
+                            <div style="position: absolute; left: -65px; top: 5px; width: 20px; height: 20px; background: var(--red); border-radius: 50%; border: 3px solid var(--white); box-shadow: 0 0 10px var(--red); animation: pulse-red 2s infinite;"></div>
+                            <div style="background: var(--red-gradient); padding: 20px; border-radius: 15px; box-shadow: 0 8px 25px rgba(220, 38, 38, 0.4); border: 2px solid var(--gold);">
+                                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px;">
+                                    <h4 style="color: var(--white); font-size: 1.3rem; font-weight: bold;">⚠️ Payment Deadline</h4>
+                                    <span style="background: var(--gold-gradient); color: var(--black); padding: 6px 12px; border-radius: 20px; font-weight: bold; font-size: 0.9rem;">Feb 26, 2026</span>
+                        <!-- March 17, 2026 -->
+                        <div style="position: relative;">
+                            <div style="position: absolute; left: -65px; top: 5px; width: 20px; height: 20px; background: var(--gold); border-radius: 50%; border: 3px solid var(--white); box-shadow: 0 0 15px var(--gold); animation: pulse-gold 3s infinite;"></div>
+                            <div style="background: linear-gradient(135deg, var(--gold), var(--red)); padding: 20px; border-radius: 15px; box-shadow: 0 10px 30px rgba(245, 158, 11, 0.4); border: 2px solid var(--white);">
+                                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px;">
+                                    <h4 style="color: var(--white); font-size: 1.3rem; font-weight: bold;">🔄 Cycle Repeats</h4>
+                                    <span style="background: rgba(255,255,255,0.2); padding: 6px 12px; border-radius: 20px; font-weight: bold; font-size: 0.9rem;">March 17, 2026</span>
+                                </div>
+                                <p style="font-size: 1rem; line-height: 1.6;">
+                                    Launch 2027 renewals immediately post-event for <span style="color: var(--gold); font-weight: bold;">maximum momentum</span>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Timeline Summary -->
+            <div style="margin-top: 30px; padding: 25px; background: rgba(255,255,255,0.05); border-radius: 15px; border: 2px solid var(--gold);">
+                <h4 style="color: var(--gold); text-align: center; font-size: 1.3rem; margin-bottom: 20px;">📈 Strategic Timeline Phases</h4>
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 20px;">
+                    <div style="text-align: center; padding: 20px; background: var(--gold-gradient); color: var(--black); border-radius: 12px;">
+                        <div style="font-size: 1.6rem; font-weight: bold;">60%</div>
+                        <div style="font-size: 0.9rem; opacity: 0.8;">Renewal Focus</div>
+                        <div style="font-size: 0.8rem; opacity: 0.7;">Mar-May 2025</div>
+                    </div>
+                    <div style="text-align: center; padding: 20px; background: var(--red-gradient); border-radius: 12px;">
+                        <div style="font-size: 1.6rem; font-weight: bold; color: var(--white);">40%</div>
+                        <div style="font-size: 0.9rem; color: var(--white); opacity: 0.9;">New Business</div>
+                        <div style="font-size: 0.8rem; color: var(--white); opacity: 0.7;">Jun-Nov 2025</div>
+                    </div>
+                    <div style="text-align: center; padding: 20px; background: var(--navy-gradient); border-radius: 12px;">
+                        <div style="font-size: 1.6rem; font-weight: bold; color: var(--white);">Final Push</div>
+                        <div style="font-size: 0.9rem; color: var(--white); opacity: 0.9;">Urgency Campaign</div>
+                        <div style="font-size: 0.8rem; color: var(--white); opacity: 0.7;">Dec-Feb 2026</div>
+                    </div>
+                </div>
+            </div>
+        </div>                                            
+        <div class="content-section">
+            <h2 class="section-title">🛡️ Risk Mitigation & Contingency Planning 🛡️</h2>
+            
+            <!-- Strategy Overview -->
+            <div class="highlight-box" style="background: linear-gradient(135deg, rgba(239, 68, 68, 0.15), rgba(185, 28, 28, 0.1)); border-left: 5px solid var(--red); border: 2px solid var(--red);">
+                <h3 style="color: var(--red); font-size: 1.4rem; margin-bottom: 20px; text-align: center;">🎯 Proactive Risk Management Strategy</h3>
+                <div style="background: rgba(0,0,0,0.4); padding: 25px; border-radius: 15px; text-align: center;">
+                    <p style="font-size: 1.2rem; line-height: 1.7; color: var(--white);">
+                        Anticipating challenges and building backup strategies to ensure <span class="text-highlight">$500K quota achievement</span> regardless of market conditions or unexpected obstacles.
+                    </p>
+                </div>
+            </div>
+            
+            <!-- Economic Downturn Impact -->
+            <div class="highlight-box" style="border-left: 5px solid #EF4444; background: rgba(239, 68, 68, 0.05);">
+                <h3 style="color: #EF4444; font-size: 1.3rem; margin-bottom: 20px;">🌍 Economic Downturn Impact</h3>
+                
+                <div style="background: rgba(239, 68, 68, 0.1); padding: 20px; border-radius: 12px; margin-bottom: 20px; border-left: 4px solid #EF4444;">
+                    <h4 style="color: var(--white); font-size: 1.1rem; margin-bottom: 10px;">⚠️ Risk</h4>
+                    <p style="font-size: 1rem; color: var(--white); opacity: 0.9;">Budget cuts affecting sponsorship spending</p>
+                </div>
+                
+                <div style="background: rgba(16, 185, 129, 0.1); padding: 20px; border-radius: 12px; border-left: 4px solid #10B981;">
+                    <h4 style="color: #34D399; font-size: 1.1rem; margin-bottom: 15px;">🛡️ MITIGATION</h4>
+                    <div style="display: grid; gap: 15px;">
+                        <div style="background: rgba(0,0,0,0.3); padding: 15px; border-radius: 10px;">
+                            <strong style="color: var(--gold);">ROI-focused messaging:</strong> Lead generation and partnership value over brand exposure
+                        </div>
+                        <div style="background: rgba(0,0,0,0.3); padding: 15px; border-radius: 10px;">
+                            <strong style="color: var(--gold);">Flexible payment terms:</strong> Quarterly payments vs. upfront to ease cash flow
+                        </div>
+                        <div style="background: rgba(0,0,0,0.3); padding: 15px; border-radius: 10px;">
+                            <strong style="color: var(--gold);">Government/stable sectors:</strong> Target recession-resistant prospects (healthcare, government)
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Timeline Compression Risk -->
+            <div class="highlight-box" style="border-left: 5px solid var(--gold); background: rgba(245, 158, 11, 0.05);">
+                <h3 style="color: var(--gold); font-size: 1.3rem; margin-bottom: 20px;">⏰ Timeline Compression Risk</h3>
+                
+                <div style="background: rgba(245, 158, 11, 0.1); padding: 20px; border-radius: 12px; margin-bottom: 20px; border-left: 4px solid var(--gold);">
+                    <h4 style="color: var(--white); font-size: 1.1rem; margin-bottom: 10px;">⚠️ Risk</h4>
+                    <p style="font-size: 1rem; color: var(--white); opacity: 0.9;">Delayed decision-making pushing sales into final weeks</p>
+                </div>
+                
+                <div style="background: rgba(16, 185, 129, 0.1); padding: 20px; border-radius: 12px; border-left: 4px solid #10B981;">
+                    <h4 style="color: #34D399; font-size: 1.1rem; margin-bottom: 15px;">🛡️ MITIGATION</h4>
+                    <div style="display: grid; gap: 15px;">
+                        <div style="background: rgba(0,0,0,0.3); padding: 15px; border-radius: 10px;">
+                            <strong style="color: var(--gold);">Early pipeline building:</strong> <span class="text-highlight">200% coverage by December 2025</span>
+                        </div>
+                        <div style="background: rgba(0,0,0,0.3); padding: 15px; border-radius: 10px;">
+                            <strong style="color: var(--gold);">Fast-track packages:</strong> Pre-approved, streamlined options for quick closes
+                        </div>
+                        <div style="background: rgba(0,0,0,0.3); padding: 15px; border-radius: 10px;">
+                            <strong style="color: var(--gold);">Decision urgency tools:</strong> Early-bird pricing deadlines and limited inventory messaging
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Renewal Rate Risk -->
+            <div class="highlight-box" style="border-left: 5px solid var(--navy); background: rgba(30, 58, 138, 0.05);">
+                <h3 style="color: #60A5FA; font-size: 1.3rem; margin-bottom: 20px;">📊 Renewal Rate Risk</h3>
+                
+                <div style="background: rgba(30, 58, 138, 0.1); padding: 20px; border-radius: 12px; margin-bottom: 20px; border-left: 4px solid var(--navy);">
+                    <h4 style="color: var(--white); font-size: 1.1rem; margin-bottom: 10px;">⚠️ Risk</h4>
+                    <p style="font-size: 1rem; color: var(--white); opacity: 0.9;">What if renewals drop below 60%?</p>
+                </div>
+                
+                <div style="background: rgba(16, 185, 129, 0.1); padding: 20px; border-radius: 12px; border-left: 4px solid #10B981;">
+                    <h4 style="color: #34D399; font-size: 1.1rem; margin-bottom: 15px;">🛡️ MITIGATION</h4>
+                    <div style="display: grid; gap: 15px;">
+                        <div style="background: rgba(0,0,0,0.3); padding: 15px; border-radius: 10px;">
+                            <strong style="color: var(--gold);">Early warning system:</strong> Monthly renewal pipeline reviews starting in March 2025
+                        </div>
+                        <div style="background: rgba(0,0,0,0.3); padding: 15px; border-radius: 10px;">
+                            <strong style="color: var(--gold);">Backup new business targets:</strong> <span class="text-highlight">150% pipeline coverage</span> for new prospects
+                        </div>
+                        <div style="background: rgba(0,0,0,0.3); padding: 15px; border-radius: 10px;">
+                            <strong style="color: var(--gold);">Package downgrades:</strong> Offer smaller packages to retain sponsors vs. losing them completely
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Success Insurance Strategy -->
+            <div class="highlight-box" style="background: linear-gradient(135deg, rgba(16, 185, 129, 0.2), rgba(5, 150, 105, 0.15)); border-left: 5px solid #10B981; border: 2px solid #10B981;">
+                <h3 style="color: #34D399; font-size: 1.4rem; margin-bottom: 25px; text-align: center;">🛡️ Success Insurance Strategy</h3>
+                
+                <div style="display: grid; gap: 25px;">
+                    <!-- Pipeline Management -->
+                    <div style="background: rgba(0,0,0,0.4); padding: 25px; border-radius: 15px; border-left: 5px solid var(--gold);">
+                        <h4 style="color: var(--gold); font-size: 1.3rem; margin-bottom: 15px;">📈 Pipeline Management</h4>
+                        <p style="font-size: 1.1rem; line-height: 1.7; color: var(--white);">
+                            Maintain <span class="text-highlight">3x coverage ratio</span> – for every $1 of quota, build $3 in qualified pipeline to ensure closure despite inevitable losses.
+                        </p>
+                        <div style="margin-top: 15px; text-align: center;">
+                            <div style="display: inline-flex; align-items: center; background: var(--gold-gradient); color: var(--black); padding: 12px 20px; border-radius: 25px; font-weight: bold; font-size: 1.1rem;">
+                                $500K Quota → $1.5M Pipeline Target
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Weekly Risk Reviews -->
+                    <div style="background: rgba(0,0,0,0.4); padding: 25px; border-radius: 15px; border-left: 5px solid var(--red);">
+                        <h4 style="color: var(--red); font-size: 1.3rem; margin-bottom: 15px;">📅 Weekly Risk Reviews</h4>
+                        <p style="font-size: 1.1rem; line-height: 1.7; color: var(--white);">
+                            Every Friday pipeline assessment with <span class="text-highlight">backup prospect activation</span> for any deals showing red flags or stalled momentum.
+                        </p>
+                        <div style="margin-top: 15px;">
+                            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 15px; text-align: center;">
+                                <div style="background: var(--red-gradient); padding: 12px; border-radius: 10px;">
+                                    <div style="font-size: 1.2rem; font-weight: bold;">📊</div>
+                                    <div style="font-size: 0.9rem;">Pipeline Review</div>
+                                </div>
+                                <div style="background: var(--gold-gradient); color: var(--black); padding: 12px; border-radius: 10px;">
+                                    <div style="font-size: 1.2rem; font-weight: bold;">🚨</div>
+                                    <div style="font-size: 0.9rem;">Risk Assessment</div>
+                                </div>
+                                <div style="background: var(--navy-gradient); padding: 12px; border-radius: 10px;">
+                                    <div style="font-size: 1.2rem; font-weight: bold;">🎯</div>
+                                    <div style="font-size: 0.9rem;">Backup Activation</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Risk Summary Dashboard -->
+            <div style="margin-top: 30px; padding: 25px; background: rgba(255,255,255,0.05); border-radius: 15px; border: 2px solid var(--gold);">
+                <h4 style="color: var(--gold); text-align: center; font-size: 1.3rem; margin-bottom: 20px;">📊 Risk Coverage Overview</h4>
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 20px;">
+                    <div style="text-align: center; padding: 20px; background: #EF4444; border-radius: 12px;">
+                        <div style="font-size: 1.6rem; font-weight: bold; color: var(--white);">3</div>
+                        <div style="font-size: 0.9rem; color: var(--white); opacity: 0.9;">Major Risks</div>
+                        <div style="font-size: 0.8rem; color: var(--white); opacity: 0.7;">Identified</div>
+                    </div>
+                    <div style="text-align: center; padding: 20px; background: #10B981; border-radius: 12px;">
+                        <div style="font-size: 1.6rem; font-weight: bold; color: var(--white);">9</div>
+                        <div style="font-size: 0.9rem; color: var(--white); opacity: 0.9;">Mitigation Strategies</div>
+                        <div style="font-size: 0.8rem; color: var(--white); opacity: 0.7;">Deployed</div>
+                    </div>
+                    <div style="text-align: center; padding: 20px; background: var(--gold-gradient); color: var(--black); border-radius: 12px;">
+                        <div style="font-size: 1.6rem; font-weight: bold;">300%</div>
+                        <div style="font-size: 0.9rem; opacity: 0.9;">Pipeline Coverage</div>
+                        <div style="font-size: 0.8rem; opacity: 0.7;">Target Ratio</div>
+                    </div>
+                    <div style="text-align: center; padding: 20px; background: var(--navy-gradient); border-radius: 12px;">
+                        <div style="font-size: 1.6rem; font-weight: bold; color: var(--white);">Weekly</div>
+                        <div style="font-size: 0.9rem; color: var(--white); opacity: 0.9;">Risk Reviews</div>
+                        <div style="font-size: 0.8rem; color: var(--white); opacity: 0.7;">Every Friday</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="content-section">
+            <h2 class="section-title">🛠️ Path to $750K: Exceeding Expectations 🛠️</h2>
+            
+            <!-- Strategy Overview -->
+            <div class="highlight-box" style="background: linear-gradient(135deg, rgba(245, 158, 11, 0.25), rgba(220, 38, 38, 0.2)); border-left: 5px solid var(--gold); border: 3px solid var(--gold); box-shadow: 0 0 25px rgba(245, 158, 11, 0.3);">
+                <h3 style="color: var(--gold); font-size: 1.5rem; margin-bottom: 20px; text-align: center;">🎯 50% Quota Overachievement Strategy</h3>
+                <div style="background: rgba(0,0,0,0.5); padding: 25px; border-radius: 15px; text-align: center;">
+                    <p style="font-size: 1.3rem; line-height: 1.7; color: var(--white);">
+                        <span style="color: var(--white);">Base Goal:</span> <span class="text-highlight">$500K</span> → 
+                        <span style="color: var(--red); font-weight: bold;">Stretch Target:</span> <span style="color: var(--gold); font-size: 1.5rem; font-weight: bold;">$750K</span>
+                    </p>
+                    <p style="font-size: 1rem; margin-top: 15px; opacity: 0.9;">
+                        Through strategic expansion opportunities and innovative partnership models
+                    </p>
+                </div>
+                
+                <!-- Revenue Breakdown Visual -->
+                <div style="margin-top: 25px; display: grid; grid-template-columns: repeat(auto-fit, minmax(120px, 1fr)); gap: 15px; text-align: center;">
+                    <div style="background: var(--navy-gradient); padding: 15px; border-radius: 12px;">
+                        <div style="font-size: 1.4rem; font-weight: bold; color: var(--white);">$500K</div>
+                        <div style="font-size: 0.9rem; color: var(--white); opacity: 0.9;">Base Target</div>
+                    </div>
+                    <div style="font-size: 2rem; color: var(--gold); display: flex; align-items: center; justify-content: center;">+</div>
+                    <div style="background: var(--red-gradient); padding: 15px; border-radius: 12px;">
+                        <div style="font-size: 1.4rem; font-weight: bold; color: var(--white);">$250K</div>
+                        <div style="font-size: 0.9rem; color: var(--white); opacity: 0.9;">Expansion</div>
+                    </div>
+                    <div style="font-size: 2rem; color: var(--gold); display: flex; align-items: center; justify-content: center;">=</div>
+                    <div style="background: var(--gold-gradient); color: var(--black); padding: 15px; border-radius: 12px; transform: scale(1.1); box-shadow: 0 8px 20px rgba(245, 158, 11, 0.4);">
+                        <div style="font-size: 1.6rem; font-weight: bold;">$750K</div>
+                        <div style="font-size: 0.9rem; opacity: 0.8;">Stretch Goal</div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Premium Package Upsells -->
+            <div class="highlight-box" style="border-left: 5px solid var(--red); background: rgba(220, 38, 38, 0.05);">
+                <h3 style="color: var(--red); font-size: 1.4rem; margin-bottom: 20px;">💎 Premium Package Upsells</h3>
+                <div style="text-align: center; margin-bottom: 25px;">
+                    <span style="background: var(--red-gradient); color: var(--white); padding: 12px 25px; border-radius: 25px; font-size: 1.2rem; font-weight: bold; box-shadow: 0 8px 20px rgba(220, 38, 38, 0.3);">
+                        Additional $100K Revenue
+                    </span>
+                </div>
+                
+                <div style="display: grid; gap: 20px;">
+                    <div style="background: var(--red-gradient); padding: 20px; border-radius: 15px; box-shadow: 0 8px 25px rgba(220, 38, 38, 0.3);">
+                        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px;">
+                            <h4 style="color: var(--white); font-size: 1.3rem; font-weight: bold;">Multi-year contracts</h4>
+                            <span style="background: rgba(255,255,255,0.2); padding: 8px 15px; border-radius: 20px; font-weight: bold; font-size: 0.9rem;">15% Discount</span>
+                        </div>
+                        <p style="font-size: 1rem; line-height: 1.6; color: var(--white);">
+                            2-year commitments with discount incentive
+                        </p>
+                    </div>
+                    
+                    <div style="background: var(--gold-gradient); color: var(--black); padding: 20px; border-radius: 15px; box-shadow: 0 8px 25px rgba(245, 158, 11, 0.3);">
+                        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px;">
+                            <h4 style="font-size: 1.3rem; font-weight: bold;">Package bundling</h4>
+                            <span style="background: rgba(0,0,0,0.2); color: var(--white); padding: 8px 15px; border-radius: 20px; font-weight: bold; font-size: 0.9rem;">20% Premium</span>
+                        </div>
+                        <p style="font-size: 1rem; line-height: 1.6;">
+                            Combine multiple touchpoints for premium pricing
+                        </p>
+                    </div>
+                    
+                    <div style="background: var(--navy-gradient); padding: 20px; border-radius: 15px; box-shadow: 0 8px 25px rgba(30, 58, 138, 0.3);">
+                        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px;">
+                            <h4 style="color: var(--white); font-size: 1.3rem; font-weight: bold;">Exclusive partnerships</h4>
+                            <span style="background: var(--gold-gradient); color: var(--black); padding: 8px 15px; border-radius: 20px; font-weight: bold; font-size: 0.9rem;">25% Uplift</span>
+                        </div>
+                        <p style="font-size: 1rem; line-height: 1.6; color: var(--white);">
+                            Industry-specific exclusivity for premium pricing
+                        </p>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- International Expansion -->
+            <div class="highlight-box" style="border-left: 5px solid #8B5CF6; background: rgba(139, 92, 246, 0.05);">
+                <h3 style="color: #A78BFA; font-size: 1.4rem; margin-bottom: 20px;">🌍 International Expansion</h3>
+                <div style="text-align: center; margin-bottom: 25px;">
+                    <span style="background: linear-gradient(135deg, #8B5CF6, #7C3AED); color: var(--white); padding: 12px 25px; border-radius: 25px; font-size: 1.2rem; font-weight: bold; box-shadow: 0 8px 20px rgba(139, 92, 246, 0.3);">
+                        Additional $75K Revenue
+                    </span>
+                </div>
+                
+                <div style="display: grid; gap: 20px;">
+                    <div style="background: rgba(139, 92, 246, 0.15); padding: 20px; border-radius: 15px; border-left: 4px solid #8B5CF6;">
+                        <h4 style="color: #A78BFA; font-size: 1.2rem; font-weight: bold; margin-bottom: 10px;">🇪🇺 European corporations</h4>
+                        <p style="font-size: 1rem; line-height: 1.6; color: var(--white);">
+                            Leverage SXSW London connections
+                        </p>
+                    </div>
+                    
+                    <div style="background: rgba(139, 92, 246, 0.15); padding: 20px; border-radius: 15px; border-left: 4px solid #8B5CF6;">
+                        <h4 style="color: #A78BFA; font-size: 1.2rem; font-weight: bold; margin-bottom: 10px;">🌏 APAC tech companies</h4>
+                        <p style="font-size: 1rem; line-height: 1.6; color: var(--white);">
+                            Target companies expanding to US market
+                        </p>
+                    </div>
+                    
+                    <div style="background: rgba(139, 92, 246, 0.15); padding: 20px; border-radius: 15px; border-left: 4px solid #8B5CF6;">
+                        <h4 style="color: #A78BFA; font-size: 1.2rem; font-weight: bold; margin-bottom: 10px;">🏛️ Government trade missions</h4>
+                        <p style="font-size: 1rem; line-height: 1.6; color: var(--white);">
+                            Embassy and economic development partnerships
+                        </p>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Custom Package Creation -->
+            <div class="highlight-box" style="border-left: 5px solid #06B6D4; background: rgba(6, 182, 212, 0.05);">
+                <h3 style="color: #22D3EE; font-size: 1.4rem; margin-bottom: 20px;">⚙️ Custom Package Creation</h3>
+                <div style="text-align: center; margin-bottom: 25px;">
+                    <span style="background: linear-gradient(135deg, #06B6D4, #0891B2); color: var(--white); padding: 12px 25px; border-radius: 25px; font-size: 1.2rem; font-weight: bold; box-shadow: 0 8px 20px rgba(6, 182, 212, 0.3);">
+                        Additional $75K Revenue
+ <!-- Competitive Advantage -->
+            <div class="highlight-box" style="background: linear-gradient(135deg, rgba(16, 185, 129, 0.2), rgba(5, 150, 105, 0.15)); border-left: 5px solid #10B981; border: 2px solid #10B981;">
+                <h3 style="color: #34D399; font-size: 1.4rem; margin-bottom: 25px; text-align: center;">🏆 Competitive Advantage for Overachievement 🏆</h3>
+                
+                <div style="display: grid; gap: 25px;">
+                    <div style="background: rgba(0,0,0,0.4); padding: 25px; border-radius: 15px; border-left: 5px solid var(--gold);">
+                        <h4 style="color: var(--gold); font-size: 1.3rem; margin-bottom: 15px;">🎯 First-mover positioning</h4>
+                        <p style="font-size: 1.1rem; line-height: 1.7; color: var(--white);">
+                            Many target companies have <span class="text-highlight">zero SXSW presence</span>, creating premium pricing opportunities for exclusive market entry.
+                        </p>
+                    </div>
+                    
+                    <div style="background: rgba(0,0,0,0.4); padding: 25px; border-radius: 15px; border-left: 5px solid var(--red);">
+                        <h4 style="color: var(--red); font-size: 1.3rem; margin-bottom: 15px;">🤝 Relationship leverage</h4>
+                        <p style="font-size: 1.1rem; line-height: 1.7; color: var(--white);">
+                            <span class="text-highlight">VIP tour alumni</span> and international connections provide warm introductions to high-value prospects typically difficult to reach cold.
+                        </p>
+                    </div>
+                </div>
+            </div>
+   <!-- Overachievement Summary -->
+            <div style="margin-top: 30px; padding: 25px; background: linear-gradient(135deg, rgba(245, 158, 11, 0.15), rgba(220, 38, 38, 0.1)); border-radius: 15px; border: 3px solid var(--gold); box-shadow: 0 0 30px rgba(245, 158, 11, 0.2);">
+                <h4 style="color: var(--gold); text-align: center; font-size: 1.4rem; margin-bottom: 25px;">📊 $750K Revenue Breakdown</h4>
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 20px; text-align: center;">
+                    <div style="padding: 20px; background: var(--navy-gradient); border-radius: 12px;">
+                        <div style="font-size: 1.8rem; font-weight: bold; color: var(--white);">$500K</div>
+                        <div style="font-size: 0.9rem; color: var(--white); opacity: 0.9;">Base Quota</div>
+                        <div style="font-size: 0.8rem; color: var(--white); opacity: 0.7;">Foundation</div>
+                    </div>
+                    <div style="padding: 20px; background: var(--red-gradient); border-radius: 12px;">
+                        <div style="font-size: 1.8rem; font-weight: bold; color: var(--white);">$100K</div>
+                        <div style="font-size: 0.9rem; color: var(--white); opacity: 0.9;">Premium Upsells</div>
+                        <div style="font-size: 0.8rem; color: var(--white); opacity: 0.7;">Multi-year & Bundles</div>
+                    </div>
+                    <div style="padding: 20px; background: linear-gradient(135deg, #8B5CF6, #7C3AED); border-radius: 12px;">
+                        <div style="font-size: 1.8rem; font-weight: bold; color: var(--white);">$75K</div>
+                        <div style="font-size: 0.9rem; color: var(--white); opacity: 0.9;">International</div>
+                        <div style="font-size: 0.8rem; color: var(--white); opacity: 0.7;">EU & APAC</div>
+                    </div>
+                    <div style="padding: 20px; background: linear-gradient(135deg, #06B6D4, #0891B2); border-radius: 12px;">
+                        <div style="font-size: 1.8rem; font-weight: bold; color: var(--white);">$75K</div>
+                        <div style="font-size: 0.9rem; color: var(--white); opacity: 0.9;">Custom Packages</div>
+                        <div style="font-size: 0.8rem; color: var(--white); opacity: 0.7;">Summits & Demos</div>
+                    </div>
+                    <div style="padding: 25px; background: var(--gold-gradient); color: var(--black); border-radius: 12px; transform: scale(1.05); box-shadow: 0 10px 30px rgba(245, 158, 11, 0.4);">
+                        <div style="font-size: 2rem; font-weight: bold;">$750K</div>
+                        <div style="font-size: 1rem; opacity: 0.9; font-weight: bold;">TOTAL TARGET</div>
+                        <div style="font-size: 0.9rem; opacity: 0.8;">+50% Achievement</div>
+                    </div>
+                </div>
+                
+                <!-- Success Metrics -->
+                <div style="margin-top: 25px; text-align: center;">
+                    <div style="display: inline-flex; align-items: center; background: rgba(0,0,0,0.4); padding: 15px 25px; border-radius: 25px;">
+                        <span style="color: var(--white); font-size: 1.1rem;">🎯 Success Rate: </span>
+                        <span style="color: var(--gold); font-size: 1.3rem; font-weight: bold; margin-left: 10px;">150% of Base Quota</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="content-section">
+                    </span>
+        <div class="content-section">
+            <h2 class="section-title">✨ Draft SXSW Outreach Email ✨</h2>
+            
+            <!-- Email Interface -->
+            <div class="highlight-box" style="background: rgba(255,255,255,0.08); border-left: 5px solid var(--navy); border: 2px solid var(--navy);">
+                <div style="background: var(--navy-gradient); padding: 20px; border-radius: 15px 15px 0 0; margin: -25px -25px 25px -25px;">
+                    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px;">
+                        <h3 style="color: var(--white); font-size: 1.3rem; font-weight: bold;">📧 New Message</h3>
+                        <div style="display: flex; gap: 10px;">
+                            <span style="background: rgba(255,255,255,0.2); padding: 4px 8px; border-radius: 15px; font-size: 0.8rem;">Draft</span>
+                            <span style="background: var(--gold-gradient); color: var(--black); padding: 4px 8px; border-radius: 15px; font-size: 0.8rem; font-weight: bold;">High Priority</span>
+                        </div>
+                    </div>
+                    
+                    <!-- Email Header Fields -->
+                    <div style="display: grid; gap: 12px;">
+                        <div style="display: grid; grid-template-columns: 60px 1fr; gap: 10px; align-items: center;">
+                            <span style="color: var(--white); font-weight: bold; font-size: 0.9rem;">To:</span>
+                            <input style="background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.2); color: var(--white); padding: 8px 12px; border-radius: 8px; font-size: 0.9rem;" value="marketing@cloudzero.com" readonly>
+                        </div>
+                        <div style="display: grid; grid-template-columns: 60px 1fr; gap: 10px; align-items: center;">
+                            <span style="color: var(--white); font-weight: bold; font-size: 0.9rem;">Subject:</span>
+                            <input style="background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.2); color: var(--white); padding: 8px 12px; border-radius: 8px; font-size: 0.9rem;" value="Make CloudZero's SXSW Debut at Capital Factory House 🚀" readonly>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Email Body -->
+                <div style="background: rgba(255,255,255,0.03); padding: 25px; border-radius: 12px; font-family: 'Arial', sans-serif; line-height: 1.7;">
+                    <p style="margin-bottom: 20px; font-size: 1rem; color: var(--white);">
+                        <strong>Hi CloudZero Marketing,</strong>
+                    </p>
+                    
+                    <p style="margin-bottom: 20px; font-size: 1rem; color: var(--white);">
+                        Congrats on the recent launch of <span style="color: var(--gold); font-weight: bold;">CloudZero Optimize</span>—no wonder FinOps communities are buzzing about your product! 🎉
+                    </p>
+                    
+                    <p style="margin-bottom: 20px; font-size: 1rem; color: var(--white);">
+                        I'm <span style="color: var(--gold); font-weight: bold;">Holly Phinney</span> with Capital Factory, and I'm reaching out because we believe <span style="color: var(--red); font-weight: bold;">SXSW 2026</span> offers an ideal stage for CloudZero to make a powerful debut in the Texas startup and DevOps ecosystem.
+                    </p>
+                    
+                    <div style="background: var(--gold-gradient); color: var(--black); padding: 20px; border-radius: 12px; margin: 25px 0;">
+                        <h4 style="font-weight: bold; margin-bottom: 15px; font-size: 1.1rem;">🎯 Why CF House is right for you:</h4>
+                        <ul style="list-style: none; padding: 0; margin: 0;">
+                            <li style="margin-bottom: 10px; padding-left: 20px; position: relative;">
+                                <span style="position: absolute; left: 0; color: var(--red); font-weight: bold;">✓</span>
+                                <strong>No competing brand clutter</strong>—you'd be CloudZero's first official presence at SXSW
+                            </li>
+                            <li style="margin-bottom: 10px; padding-left: 20px; position: relative;">
+                                <span style="position: absolute; left: 0; color: var(--red); font-weight: bold;">✓</span>
+                                Direct access to <strong>3,700+ founders, VCs, and engineering leaders</strong> in our Howdy Lounge or Podcast Room
+                            </li>
+                            <li style="margin-bottom: 0; padding-left: 20px; position: relative;">
+                                <span style="position: absolute; left: 0; color: var(--red); font-weight: bold;">✓</span>
+                                <strong>Full ownership of a touchpoint:</strong> leading panels, branded discussions, or product deep-dive interviews
+                            </li>
+                        </ul>
+                    </div>
+                    
+                    <p style="margin-bottom: 20px; font-size: 1rem; color: var(--white);">
+                        Would you be open to a <span style="color: var(--gold); font-weight: bold;">20-minute chat this week</span> to explore how a debut sponsorship could elevate CloudZero's cloud-cost narrative at SXSW?
+                    </p>
+                    
+                    <p style="margin-bottom: 20px; font-size: 1rem; color: var(--white);">
+                        I can share <span style="color: var(--red); font-weight: bold;">custom mockups, ROI projections, and previous sponsor feedback</span>—just say the word.
+                    </p>
+                    
+                    <p style="margin-bottom: 25px; font-size: 1rem; color: var(--white);">
+                        Looking forward to the conversation!
+                    </p>
+                    
+                    <div style="border-top: 2px solid var(--gold); padding-top: 20px;">
+                        <p style="margin-bottom: 8px; font-size: 1rem; color: var(--white);"><strong>Best,</strong></p>
+                        <p style="margin-bottom: 8px; font-size: 1.1rem; color: var(--gold); font-weight: bold;">Holly Phinney</p>
+                        <p style="margin-bottom: 15px; font-size: 0.95rem; color: var(--white); opacity: 0.9;">Sales Strategy Candidate, Capital Factory</p>
+                        
+                        <!-- Contact Links -->
+                        <div style="display: flex; flex-wrap: wrap; gap: 15px; align-items: center;">
+                            <a href="https://linkedin.com/in/holly-phinney" target="_blank" style="display: flex; align-items: center; gap: 8px; color: var(--navy); background: rgba(255,255,255,0.9); padding: 8px 15px; border-radius: 25px; text-decoration: none; font-weight: bold; font-size: 0.9rem; transition: all 0.3s ease; border: 2px solid var(--navy);" 
+                               onmouseover="this.style.background='var(--navy)'; this.style.color='var(--white)';" 
+                               onmouseout="this.style.background='rgba(255,255,255,0.9)'; this.style.color='var(--navy)';">
+                                🔗 linkedin.com/in/holly-phinney
+                            </a>
+                            <a href="mailto:hollyphinney@gmail.com" style="display: flex; align-items: center; gap: 8px; color: var(--red); background: rgba(255,255,255,0.9); padding: 8px 15px; border-radius: 25px; text-decoration: none; font-weight: bold; font-size: 0.9rem; transition: all 0.3s ease; border: 2px solid var(--red);" 
+                               onmouseover="this.style.background='var(--red)'; this.style.color='var(--white)';" 
+                               onmouseout="this.style.background='rgba(255,255,255,0.9)'; this.style.color='var(--red)';">
+                                📧 hollyphinney@gmail.com
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Email Actions -->
+                <div style="background: var(--navy-gradient); padding: 15px 25px; border-radius: 0 0 15px 15px; margin: 25px -25px -25px -25px;">
+                    <div style="display: flex; justify-content: space-between; align-items: center;">
+                        <div style="display: flex; gap: 12px;">
+                            <button style="background: var(--gold-gradient); color: var(--black); border: none; padding: 10px 20px; border-radius: 8px; font-weight: bold; font-size: 0.9rem; cursor: pointer; transition: transform 0.2s ease;" 
+                                    onmouseover="this.style.transform='scale(1.05)'" 
+                                    onmouseout="this.style.transform='scale(1)'">
+                                📤 Send
+                            </button>
+                            <button style="background: rgba(255,255,255,0.1); color: var(--white); border: 1px solid rgba(255,255,255,0.3); padding: 10px 20px; border-radius: 8px; font-weight: bold; font-size: 0.9rem; cursor: pointer;">
+                                💾 Save Draft
+                            </button>
+                        </div>
+                        <div style="display: flex; gap: 8px;">
+                            <span style="background: rgba(255,255,255,0.1); color: var(--white); padding: 6px 12px; border-radius: 15px; font-size: 0.8rem;">📎 Attachments: 0</span>
+                            <span style="background: var(--gold-gradient); color: var(--black); padding: 6px 12px; border-radius: 15px; font-size: 0.8rem; font-weight: bold;">🎯 Personalized</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Email Strategy Breakdown -->
+            <div style="margin-top: 30px; padding: 25px; background: rgba(255,255,255,0.05); border-radius: 15px; border: 2px solid var(--gold);">
+                <h4 style="color: var(--gold); text-align: center; font-size: 1.3rem; margin-bottom: 20px;">📊 Email Strategy Breakdown</h4>
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 20px;">
+                    <div style="text-align: center; padding: 20px; background: var(--red-gradient); border-radius: 12px;">
+                        <div style="font-size: 1.6rem; font-weight: bold; color: var(--white);">🎯</div>
+                        <div style="font-size: 0.9rem; color: var(--white); opacity: 0.9; margin-top: 8px;">Personalized Hook</div>
+                        <div style="font-size: 0.8rem; color: var(--white); opacity: 0.7;">CloudZero Optimize Launch</div>
+                    </div>
+                    <div style="text-align: center; padding: 20px; background: var(--gold-gradient); color: var(--black); border-radius: 12px;">
+                        <div style="font-size: 1.6rem; font-weight: bold;">🚀</div>
+                        <div style="font-size: 0.9rem; opacity: 0.9; margin-top: 8px;">Value Proposition</div>
+                        <div style="font-size: 0.8rem; opacity: 0.7;">First SXSW Presence</div>
+                    </div>
+                    <div style="text-align: center; padding: 20px; background: var(--navy-gradient); border-radius: 12px;">
+                        <div style="font-size: 1.6rem; font-weight: bold; color: var(--white);">📞</div>
+                        <div style="font-size: 0.9rem; color: var(--white); opacity: 0.9; margin-top: 8px;">Clear CTA</div>
+                        <div style="font-size: 0.8rem; color: var(--white); opacity: 0.7;">20-Minute Chat</div>
+                    </div>
+                    <div style="text-align: center; padding: 20px; background: linear-gradient(135deg, #10B981, #059669); border-radius: 12px;">
+                        <div style="font-size: 1.6rem; font-weight: bold; color: var(--white);">🔗</div>
+                        <div style="font-size: 0.9rem; color: var(--white); opacity: 0.9; margin-top: 8px;">Professional Links</div>
+                        <div style="font-size: 0.8rem; color: var(--white); opacity: 0.7;">LinkedIn & Email</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="content-section">
+            <div class="highlight-box" style="background: linear-gradient(135deg, rgba(245, 158, 11, 0.2), rgba(220, 38, 38, 0.15)); border-left: 5px solid var(--gold); border: 3px solid var(--gold); box-shadow: 0 0 30px rgba(245, 158, 11, 0.3); text-align: center;">
+                <h2 style="color: var(--gold); font-size: 1.8rem; margin-bottom: 20px;">🤝 Contact Information 🤝</h2>
+                
+                <p style="font-size: 1.3rem; color: var(--white); margin-bottom: 30px; line-height: 1.6;">
+                    Ready to discuss your <span class="text-highlight">Capital Factory House sponsorship opportunity</span>
+                </p>
+                
+                <div style="display: grid; gap: 20px; max-width: 600px; margin: 0 auto;">
+                    <!-- Email -->
+                    <a href="mailto:hollyphinney@gmail.com" style="display: flex; align-items: center; justify-content: center; gap: 15px; background: var(--red-gradient); color: var(--white); padding: 20px; border-radius: 15px; text-decoration: none; font-weight: bold; font-size: 1.2rem; transition: all 0.3s ease; box-shadow: 0 8px 25px rgba(220, 38, 38, 0.3);" 
+                       onmouseover="this.style.transform='translateY(-3px)'; this.style.boxShadow='0 12px 35px rgba(220, 38, 38, 0.4)';" 
+                       onmouseout="this.style.transform='translateY(0px)'; this.style.boxShadow='0 8px 25px rgba(220, 38, 38, 0.3)';">
+                        <span style="font-size: 1.5rem;">📧</span>
+                        <span>hollyphinney@gmail.com</span>
+                    </a>
+                    
+                    <!-- LinkedIn -->
+                    <a href="https://linkedin.com/in/holly-phinney" target="_blank" style="display: flex; align-items: center; justify-content: center; gap: 15px; background: var(--navy-gradient); color: var(--white); padding: 20px; border-radius: 15px; text-decoration: none; font-weight: bold; font-size: 1.2rem; transition: all 0.3s ease; box-shadow: 0 8px 25px rgba(30, 58, 138, 0.3);" 
+                       onmouseover="this.style.transform='translateY(-3px)'; this.style.boxShadow='0 12px 35px rgba(30, 58, 138, 0.4)';" 
+                       onmouseout="this.style.transform='translateY(0px)'; this.style.boxShadow='0 8px 25px rgba(30, 58, 138, 0.3)';">
+                        <span style="font-size: 1.5rem;">📊</span>
+                        <span>LinkedIn Profile</span>
+                    </a>
+                    
+                    <!-- Phone -->
+                    <div style="display: flex; align-items: center; justify-content: center; gap: 15px; background: var(--gold-gradient); color: var(--black); padding: 20px; border-radius: 15px; font-weight: bold; font-size: 1.2rem; box-shadow: 0 8px 25px rgba(245, 158, 11, 0.3);">
+                        <span style="font-size: 1.5rem;">📱</span>
+                        <span>254-913-8845</span>
+                    </div>
+                </div>
+                
+                <!-- Call to Action -->
+                <div style="margin-top: 40px; padding: 25px; background: rgba(0,0,0,0.4); border-radius: 15px; border: 2px solid var(--red);">
+                    <h3 style="color: var(--red); font-size: 1.4rem; margin-bottom: 15px;">🚀 Let's Build Something Amazing Together</h3>
+                    <p style="font-size: 1.1rem; color: var(--white); line-height: 1.6;">
+                        Whether you're looking to make your <span class="text-highlight">SXSW debut</span> or expand your existing presence, 
+                        I'm here to create a <span class="text-red">custom sponsorship strategy</span> that delivers measurable ROI and 
+                        authentic startup ecosystem engagement.
+                    </p>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Feedback Section -->
+        <div style="margin-top: 40px; text-align: center;">
+            <a href="mailto:hollyphinney@gmail.com?subject=Portfolio Feedback - SXSW Capital Factory Strategy&body=Hi Holly,%0D%0A%0D%0AI've reviewed your SXSW Capital Factory House strategic portfolio and wanted to share some feedback:%0D%0A%0D%0AWhat impressed me most:%0D%0A%0D%0AQuestions I have:%0D%0A%0D%0ASuggestions for improvement:%0D%0A%0D%0AOverall thoughts:%0D%0A%0D%0AThanks for sharing this comprehensive strategy!%0D%0A%0D%0ABest regards," 
+               style="display: inline-flex; align-items: center; gap: 12px; background: linear-gradient(135deg, rgba(245, 158, 11, 0.2), rgba(220, 38, 38, 0.15)); color: var(--gold); padding: 15px 30px; border-radius: 25px; text-decoration: none; font-weight: bold; font-size: 1.1rem; border: 2px solid var(--gold); transition: all 0.3s ease; box-shadow: 0 5px 15px rgba(245, 158, 11, 0.2);" 
+               onmouseover="this.style.transform='translateY(-2px)'; this.style.boxShadow='0 8px 25px rgba(245, 158, 11, 0.3)'; this.style.background='var(--gold-gradient)'; this.style.color='var(--black)';" 
+               onmouseout="this.style.transform='translateY(0px)'; this.style.boxShadow='0 5px 15px rgba(245, 158, 11, 0.2)'; this.style.background='linear-gradient(135deg, rgba(245, 158, 11, 0.2), rgba(220, 38, 38, 0.15))'; this.style.color='var(--gold)';">
+                <span style="font-size: 1.3rem;">💬</span>
+                <span>Give Me Feedback</span>
+            </a>
+        </div>
+    </div>
+</body>
+</html> 
